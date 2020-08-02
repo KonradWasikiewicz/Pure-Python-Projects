@@ -23,9 +23,10 @@ words = ['way', 'year', 'work', 'government', 'day', 'man', 'world', 'life', 'pa
         'park', 'hour','investment', 'test', 'garden', 'husband', 'employment', 'style', 'science','look', 'deal','charge', 'help', 
         'economy','new', 'page', 'risk', 'advice', 'event', 'picture','commission', 'fish', 'college', 'oil', 'doctor','opportunity',
         'film', 'conference', 'operation','application', 'press', 'extent', 'addition', 'station', 'window', 'shop', 'access', 'region',
-        'doubt','majority', 'degree', 'television', 'blood', 'statement', 'sound', 'election', 'parliament', 'site','mark', 'importance', 'title', 'species', 'increase', 'return', 'concern', 'public', 'competition',
-        'software', 'glass', 'lady', 'answer', 'earth', 'daughter', 'purpose', 'responsibility', 'leader','river', 'eye','ability',
-        'appeal', 'opposition', 'campaign', 'respect', 'task', 'instance', 'sale', 'whole', 'officer', 'method','division', 'source',
+        'doubt','majority', 'degree', 'television', 'blood', 'statement', 'sound', 'election', 'parliament', 'site','mark', 'importance', 
+        'title', 'species', 'increase', 'return', 'concern', 'public', 'competition', 'software', 'glass', 'lady', 'answer', 'earth', 'daughter',
+        'purpose', 'responsibility', 'leader','river', 'eye','ability','appeal', 'opposition', 'campaign', 'respect', 'task', 'instance', 
+         'sale', 'whole', 'officer', 'method','division', 'source','number', 'command', 'abuse', 'limit', 'championship',
         'piece', 'pattern', 'lack', 'disease', 'equipment', 'surface', 'oxford', 'demand', 'post','mouth', 'radio', 'provision',
         'attempt', 'sector', 'firm', 'status', 'peace', 'variety', 'teacher', 'show', 'speaker', 'baby', 'arm', 'base', 'miss',
         'safety', 'trouble', 'culture', 'direction', 'context', 'character', 'box', 'discussion', 'past', 'weight', 'organisation',
@@ -82,4 +83,4 @@ words = ['way', 'year', 'work', 'government', 'day', 'man', 'world', 'life', 'pa
         'self', 'break', 'drama', 'corporation', 'currency', 'extension', 'convention', 'partnership', 'skill', 'furniture',
         'round', 'regime', 'inquiry', 'rugby', 'philosophy', 'scope', 'gate', 'minority', 'intelligence', 'restaurant',
         'consequence', 'mill', 'golf', 'retirement', 'priority', 'plane', 'gun', 'gap', 'core', 'uncle', 'thatcher', 'fun',
-        'arrival', 'snow', 'no.', 'command', 'abuse', 'limit', 'championship']
+        'arrival', 'snow']
