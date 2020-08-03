@@ -3,9 +3,9 @@ import string   #uppercase letters in english dict
 
 from ThousandMostPopularWords import words  #imported list of 1000 most populr english nouns 
 
-def get_valid_words(words):   #
+def get_valid_words(words):   #excluding any words that might be 
     word = random.choice(words)
-    while '-' in word or " " in word:
+    while '-' in word or ' ' in word or '.' in word:
         word = random.choice(words)
     return word 
 
@@ -14,6 +14,12 @@ def hangman():
     word_letters = set(word) # keeps track of all the distinct letters in a word
     alphabet = set(string.ascii_uppercase)
     used_letters = set() # keeps track of what letter user guessed 
+
+    print('You have used these letters: ', ' '.join(used_letters))
+
+    word_list = [letter if letter in used_letters else '_' for letter in word]
+
+    print('Current word: ', ' '.join(word_list))
 
     user_letter = input ('Guess a letter: ').upper() 
     if user_letter in alphabet - used_letters:
@@ -24,5 +30,6 @@ def hangman():
         print('You have already used that letter, try another one.')    
     else:
         print('You have used an invalid character.')
-user_input = input('Type something:')
-print(user_input)
+        
+if __name__ == '__main__':
+    hangman()
