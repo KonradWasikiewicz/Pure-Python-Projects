@@ -13,23 +13,26 @@ def hangman():
     word = get_valid_words(words)
     word_letters = set(word) # keeps track of all the distinct letters in a word
     alphabet = set(string.ascii_uppercase)
-    used_letters = set() # keeps track of what letter user guessed 
+    used_letters = sorted(set()) # keeps track of what letter user have guessed (in alphabetical order)
+    chances = 5 
 
-    print('You have used these letters: ', ' '.join(used_letters))
+    #user input
+    while chances > 1:
+        print('You have used these letters: ', ' '.join(used_letters))
 
-    word_list = [letter if letter in used_letters else '_' for letter in word]
+        word_list = [letter if letter in used_letters else '_' for letter in word]
 
-    print('Current word: ', ' '.join(word_list))
+        print('Current word: ', ' '.join(word_list))
 
-    user_letter = input ('Guess a letter: ').upper() 
-    if user_letter in alphabet - used_letters:
-        used_letters.add(used_letters)
-        if user_letter in word_letters:
-            word_letters.remove(user_letter)
-    elif user_letter is used_letters:
-        print('You have already used that letter, try another one.')    
-    else:
-        print('You have used an invalid character.')
-        
+        user_letter = input ('Guess a letter: ').upper() 
+        if user_letter in alphabet - used_letters:
+            used_letters.add(used_letters)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
+        elif user_letter is used_letters:
+            print('You have already used that letter, try another one.')    
+        else:
+            print('You have used an invalid character.')
+
 if __name__ == '__main__':
     hangman()
