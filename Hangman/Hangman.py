@@ -18,7 +18,7 @@ def hangman():
 
     #user input
     while chances > 1:
-        print('You have used these letters: ', ' '.join(used_letters))
+        print('You have', chances, 'chances and used these letters:', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '_' for letter in word]
 
@@ -36,3 +36,6 @@ def hangman():
 
 if __name__ == '__main__':
     hangman()
+
+
+#https://github.com/kying18/hangman/blob/master/hangman.py
