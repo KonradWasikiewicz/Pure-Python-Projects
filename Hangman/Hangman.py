@@ -21,10 +21,9 @@ def hangman():
         print('You have', chances, 'chances and used these letters:', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '_' for letter in word]
-
         print('Current word: ', ' '.join(word_list))
 
-        user_letter = input ('Guess a letter: ').upper() 
+        user_letter = input('Guess a letter: ').upper() 
         if user_letter in alphabet - used_letters:
             used_letters.add(used_letters)
             if user_letter in word_letters:
