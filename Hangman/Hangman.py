@@ -15,11 +15,11 @@ def hangman():
     word_letters = set(word) # keeps track of all the distinct letters in a word
     alphabet = set(string.ascii_uppercase)
     used_letters = set() # keeps track of what letter user have guessed (in alphabetical order)
-    chances = 5 
+    chances = 7
 
     #user input
-    while chances > 0:
-        print('You have', chances, 'chances and used these letters: ', ' '.join(used_letters))
+    while len(word_letters) > 0 and chances > 0:
+        print('\nYou have', chances, 'chances and used these letters: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '_' for letter in word]
         print('Current word: ', ' '.join(word_list))
@@ -36,17 +36,19 @@ def hangman():
         elif user_letter in used_letters:
             print('\nYou have already used that letter, try another one.')    
         elif len(user_letter) > 1:
-            print('Mate, give one latter plese.')
+            print('\nMate, give one letter plese.')
         else:
             print('\nYou have used an invalid character.')
     
     if chances == 0:
-        print('\nYou died bro. The word was', word)
+        print('You died bro. The word was', word)
     else:
-        print('\nNice job bro. You got that.') 
+        print('Nice job bro. You got that. The word was ',word) 
 
 if __name__ == '__main__':
     hangman()
 
 
-#https://github.com/kying18/hangman/blob/master/hangman.py
+# wanna try again option 
+#hangman rysunek 
+
