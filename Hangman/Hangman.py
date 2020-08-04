@@ -1,16 +1,17 @@
 import random   #word choice
 import string   #uppercase letters in english dict 
 
-from ThousandMostPopularWords import words  #imported list of 1000 most populr english nouns 
-print(words)
-def get_valid_words(words):   #excluding any words that might not be valid
+from ThousandMostPopularWords import words  #imported list of 1000 most populr english nouns  
+
+
+def get_valid_word(words):   #excluding any words that might not be valid
     word = random.choice(words)
     while '-' in word or ' ' in word or '.' in word:
         word = random.choice(words)
     return word.upper()
 
 def hangman():
-    word = get_valid_words(words)
+    word = get_valid_word(words)
     word_letters = set(word) # keeps track of all the distinct letters in a word
     alphabet = set(string.ascii_uppercase)
     used_letters = sorted(set()) # keeps track of what letter user have guessed (in alphabetical order)
