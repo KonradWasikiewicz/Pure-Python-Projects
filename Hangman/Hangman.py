@@ -18,29 +18,29 @@ def hangman():
 
     #user input
     while chances > 1:
-        print('You have', chances, 'chances and used these letters:', ' '.join(used_letters))
+        print('You have', chances, 'chances and used these letters: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '_' for letter in word]
         print('Current word: ', ' '.join(word_list))
 
         user_letter = input('Guess a letter: ').upper() 
         if user_letter in alphabet - used_letters:
-            used_letters.add(user_letter)
+            used_letters.add(user_letter)   #add used letter to the used letters set
             if user_letter in word_letters:
-                word_letters.remove(user_letter)
+                word_letters.remove(user_letter)    
                 print('')
             else:
                 chances = chances - 1 #if wrong, decrease chances by 1 
-                print('Your letter is not in the word.')
+                print('\nYour letter is not in the word.')
         elif user_letter is used_letters:
-            print('You have already used that letter, try another one.')    
+            print('\nYou have already used that letter, try another one.')    
         else:
-            print('You have used an invalid character.')
+            print('\nYou have used an invalid character.')
     
     if chances == 0:
-        print('You died bro. The word was ', word)
+        print('\nYou died bro. The word was ', word)
     else:
-        print('Nice job bro. You got that') 
+        print('\nNice job bro. You got that.') 
 
 if __name__ == '__main__':
     hangman()
