@@ -14,7 +14,7 @@ def hangman():
     word = get_valid_word(words)
     word_letters = set(word) # keeps track of all the distinct letters in a word
     alphabet = set(string.ascii_uppercase)
-    used_letters = sorted(set()) # keeps track of what letter user have guessed (in alphabetical order)
+    used_letters = set() # keeps track of what letter user have guessed (in alphabetical order)
     chances = 5 
 
     #user input
