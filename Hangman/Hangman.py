@@ -18,7 +18,7 @@ def hangman():
     chances = 5 
 
     #user input
-    while chances > 1:
+    while chances > 0:
         print('You have', chances, 'chances and used these letters: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '_' for letter in word]
@@ -33,13 +33,15 @@ def hangman():
             else:
                 chances = chances - 1 #if wrong, decrease chances by 1 
                 print('\nYour letter is not in the word.')
-        elif user_letter is used_letters:
+        elif user_letter in used_letters:
             print('\nYou have already used that letter, try another one.')    
+        elif len(user_letter) > 1:
+            print('Mate, give one latter plese.')
         else:
             print('\nYou have used an invalid character.')
     
     if chances == 0:
-        print('\nYou died bro. The word was ', word)
+        print('\nYou died bro. The word was', word)
     else:
         print('\nNice job bro. You got that.') 
 
