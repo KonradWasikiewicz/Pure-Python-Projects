@@ -2,12 +2,12 @@ import random   #word choice
 import string   #uppercase letters in english dict 
 
 from ThousandMostPopularWords import words  #imported list of 1000 most populr english nouns 
-
+print(words)
 def get_valid_words(words):   #excluding any words that might not be valid
     word = random.choice(words)
     while '-' in word or ' ' in word or '.' in word:
         word = random.choice(words)
-    return word 
+    return word.upper()
 
 def hangman():
     word = get_valid_words(words)
