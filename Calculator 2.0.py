@@ -1,10 +1,11 @@
 
-#dodac pasek na gorze w wyborem np Edit, View i tam np wybor layoutu i inne przełączniki
-#dodac: nawiasy
+#dodac pasek na gorze w wyborem np Edit, View i tam np wybor layoutu i inne przełączniki, dodac: nawiasy
 #dodać pisanie równania, a nie ze tylko dwie cyfry. teraz jak chce zrobic 2*2*2 to musze dwa razy = nacisnac
 #rownanie powinno sie wyswietlac jako string nad inputem
 #ogarnąć 'format' tj ustawienie miejsc zerowych 
-#kolorowanie moze dac mojego charakteru 
+
+
+
 
 from tkinter import *
 from math import *
