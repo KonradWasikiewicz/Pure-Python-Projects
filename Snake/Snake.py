@@ -4,10 +4,11 @@ import math
 import random 
 import pygame
 import tkinter as tk
+from tkinter import messagebox
 
 class cube(object):
-    rows = 0 
-    w = 0 
+    rows = 20 
+    w = 500
     def __init__(self, start, dirnx = 1, dirny = 0, color = (255,0,0)):
         pass
     def move(self, dirnx, driny):
@@ -55,7 +56,7 @@ def message_box(subject, content):
 
 
 def main():
-    width = 600
+    width = 500
     rows = 20
     win = pygame.display.set_mode((width, width))
     s = snake((255,0,0), (10,10))
@@ -67,3 +68,6 @@ def main():
         pygame.time.delay(50)
         clock.tick(10)
         redrawWindow(win)
+
+
+main()
