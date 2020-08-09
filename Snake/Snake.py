@@ -33,15 +33,15 @@ class snake(object):
             
             keys = pygame.key.get_pressed
 
-            for key in keys:
-                if keys[pygame.K_LEFT]:
+            for key in keys:                       #defining directions
+                if keys[pygame.K_LEFT]:             
                 
-                if keys[pygame.K_LEFT]:                    
+                if keys[pygame.K_RIGHT]:                    
                 
-                if keys[pygame.K_LEFT]:
+                if keys[pygame.K_UP]:
 
-                if keys[pygame.K_LEFT]:
-                                        
+                if keys[pygame.K_DOWN]:
+
     def reset(self, pos):
         pass
     def addTail(self):
