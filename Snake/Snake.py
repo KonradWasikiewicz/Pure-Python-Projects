@@ -17,10 +17,31 @@ class cube(object):
         pass
 
 class snake(object):
+    body = []
+    turns = {}
     def __init_(self, color, pos):
-        pass
-    def move(self):
-        pass
+        self.color = color
+        self.head = cube(pos)
+        self.body.append(self.head)
+        self.dirnx = 0    #keeping track of what direction are we moving 
+        self.dirny = 1
+
+    def move(self):                   #chyba tutaj jest jakis blad w kodzie, bo jak masz jakies 2-3 cubes to wysjakuje blad jak snake idzie w prawo a klikniesz w lewo
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            
+            keys = pygame.key.get_pressed
+
+            for key in keys:
+                if keys[pygame.K_LEFT]:
+                
+                if keys[pygame.K_LEFT]:                    
+                
+                if keys[pygame.K_LEFT]:
+
+                if keys[pygame.K_LEFT]:
+                                        
     def reset(self, pos):
         pass
     def addTail(self):
