@@ -1,4 +1,4 @@
-#https://www.youtube.com/watch?v=CD4qAhfFuLo   # 10:11 powinna juz si eplansza wyswietlac 
+#https://www.youtube.com/watch?v=CD4qAhfFuLo   # 18:39 powinna juz si eplansza wyswietlac 
 
 import math
 import random 
@@ -35,12 +35,28 @@ class snake(object):
 
             for key in keys:                       #defining directions
                 if keys[pygame.K_LEFT]:             
-                
-                if keys[pygame.K_RIGHT]:                    
-                
-                if keys[pygame.K_UP]:
+                    self.dirnx = -1 
+                    self.dirny = 0 
+                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]  #adding key which is the current position of the head of the snake 
 
-                if keys[pygame.K_DOWN]:
+                if keys[pygame.K_RIGHT]:                    
+                    self.dirnx = 1 
+                    self.dirny = 0 
+                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
+
+                elif keys[pygame.K_UP]:
+                    self.dirnx = 0
+                    self.dirny = -1 
+                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
+
+                elif keys[pygame.K_DOWN]:
+                    self.dirnx = 0 
+                    self.dirny = 1 
+                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
+        for i, c in enumerate(self.body):
+            p = c.pos[:]
+            if p in self.turns:
+
 
     def reset(self, pos):
         pass
