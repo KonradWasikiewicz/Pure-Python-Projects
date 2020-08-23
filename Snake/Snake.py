@@ -69,7 +69,8 @@ class snake(object):
        
 
     def reset(self, pos):
-        pass
+        self.head = cube(pos)
+        self.body = []
     def addTail(self):
         pass
     def draw(self,surface):
