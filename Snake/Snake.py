@@ -15,7 +15,9 @@ class cube(object):
         self.dirny = 0
         self.color = color
     def move(self, dirnx, driny):
-        pass
+        self.dirnx = dirnx
+        self.dirny = dirny
+        self.pos = (self.pos[0] + self.dirnx, self.pos[1] + self.dirny)
     def draw(self, surface, eyes = False):
         pass
 
