@@ -22,7 +22,7 @@ class cube(object):
         dis = self.w // self.rows
         i = self.pos[0]
         j = self.pos[1]
-        
+
         pygame.draw.rect(surface, self.color, (i*dis+1,j*dis+1, dis-2, dis-2))
         if eyes:
             centre = dis//2
@@ -47,7 +47,7 @@ class snake(object):
             if event.type == pygame.QUIT:
                 pygame.quit()
             
-            keys = pygame.key.get_pressed
+            keys = pygame.key.get_pressed()
 
             for key in keys:                       #defining directions
                 if keys[pygame.K_LEFT]:             
