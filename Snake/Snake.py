@@ -90,7 +90,7 @@ class snake(object):
         self.body.append(self.head)
         self.turns = {}
         self.dirnx = 0
-        
+        self.dirny = 1
     def addTail(self):
         pass
     def draw(self,surface):
