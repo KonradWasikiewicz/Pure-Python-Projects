@@ -1,4 +1,6 @@
 #https://www.youtube.com/watch?v=CD4qAhfFuLo   # 18:39 powinna juz si eplansza wyswietlac 
+https://pastebin.com/embed_js/jB6k06hG 
+
 
 import math
 import random 
