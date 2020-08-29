@@ -71,6 +71,7 @@ class snake(object):
                     self.dirnx = 0 
                     self.dirny = 1 
                     self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
+        
         for i, c in enumerate(self.body):
             p = c.pos[:]
             if p in self.turns:
@@ -94,7 +95,13 @@ class snake(object):
         self.dirnx = 0
         self.dirny = 1
     def addTail(self):
-        pass
+        tail = self.body[-1]
+        dx, dy = tail.dirnx, tail.dirny
+ 
+        if dx == 1 and dy == 0:
+            self.body.append(cube((tail.pos[0]-1,tail.pos[1])))
+
+            
     def draw(self,surface):
         pass
 
