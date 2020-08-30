@@ -112,7 +112,8 @@ class snake(object):
 
         
     def draw(self,surface):
-        pass
+        for i, c in enumerate(self.body):
+            if i ==0:
 
  
 def drawGrid(w, rows, surface):
