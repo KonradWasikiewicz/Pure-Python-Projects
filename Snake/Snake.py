@@ -114,7 +114,9 @@ class snake(object):
     def draw(self,surface):
         for i, c in enumerate(self.body):
             if i ==0:
-
+                c.draw(surface, True)
+            else:
+                c.draw(surface)
  
 def drawGrid(w, rows, surface):
     sizeBtwn = w // rows  #how big each square in the grid is going to be 
