@@ -94,6 +94,7 @@ class snake(object):
         self.turns = {}
         self.dirnx = 0
         self.dirny = 1
+
     def addTail(self):
         tail = self.body[-1]
         dx, dy = tail.dirnx, tail.dirny
@@ -139,7 +140,11 @@ def redrawWindow(surface):
     pygame.display.update()
     
 def randomFood(rows, items):
-    pass
+    positions = item.body
+ 
+    while True:
+        x = random.randrange(rows)
+        y = random.randrange(rows)
 
 def message_box(subject, content):
     pass
