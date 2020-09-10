@@ -153,7 +153,8 @@ def randomFood(rows, items):
     return (x,y)
     
 def message_box(subject, content):
-    pass
+    root = tk.Tk()
+    root.attributes("-topmost", True)
 
 
 def main():
