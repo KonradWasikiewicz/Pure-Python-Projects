@@ -181,8 +181,14 @@ def main():
             s.addCube()
             snack = cube(randomFood(rows,s), color = (0,255,0))
         
-        
+        for x in range(len(s.body)):
+            if s.body[x].pos in list(map(lambda z: z.pos, s.body[x+1])):
+                print('Score: ', len(s.body))
+                message_box('You lost!', 'Play again')
+                s.reset((10,10))
+                break
+                
         redrawWindow(win)
-
+    pass
 
 main()
