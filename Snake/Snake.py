@@ -128,7 +128,7 @@ def drawGrid(w, rows, surface):
         y = y + sizeBtwn
 
         pygame.draw.line(suface,(255,255,255), (x,0),(x,w)) #drawing a white line
-        pygame.draw.line(suface,(255,255,255), (0,y),(w,y)) #drawing a white 
+        pygame.draw.line(suface,(255,255,255), (0,y),(w,y)) 
                 
 
 def redrawWindow(surface):
@@ -136,7 +136,7 @@ def redrawWindow(surface):
     surface.fill((0,0,0))
     s.draw(surface)
     snack.draw(surface)
-    drawGrid(width,rows, surface)
+    drawGrid(width, rows, surface)
     pygame.display.update()
     
 def randomFood(rows, items):
@@ -164,6 +164,7 @@ def message_box(subject, content):
 
 
 def main():
+    global width, rows, s, snack
     width = 500
     rows = 20
     win = pygame.display.set_mode((width, width))
