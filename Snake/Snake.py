@@ -176,6 +176,12 @@ def main():
     while flag:
         pygame.time.delay(50)
         clock.tick(10)
+        s.move()
+        if s.body[0].pos == snack.pos:
+            s.addCube()
+            snack = cube(randomFood(rows,s), color = (0,255,0))
+        
+        
         redrawWindow(win)
 
 
