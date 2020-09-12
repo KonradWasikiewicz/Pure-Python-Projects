@@ -16,10 +16,12 @@ class cube(object):
         self.dirnx = 1
         self.dirny = 0
         self.color = color
+
     def move(self, dirnx, driny):
         self.dirnx = dirnx
         self.dirny = dirny
         self.pos = (self.pos[0] + self.dirnx, self.pos[1] + self.dirny)
+
     def draw(self, surface, eyes = False):
         dis = self.w // self.rows
         i = self.pos[0]
@@ -95,7 +97,7 @@ class snake(object):
         self.dirnx = 0
         self.dirny = 1
 
-    def addTail(self):
+    def addCube(self):
         tail = self.body[-1]
         dx, dy = tail.dirnx, tail.dirny
  
@@ -107,7 +109,7 @@ class snake(object):
             self.body.append(cube((tail.pos[0],tail.pos[1]-1)))
         elif dx == 0 and dy == -1:
             self.body.append(cube((tail.pos[0],tail.pos[1]+1)))
-
+ 
         self.body[-1].dirnx = dx
         self.body[-1].dirny = dy
 
