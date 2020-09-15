@@ -12,7 +12,7 @@ pygame.init()
 class cube(object):
     rows = 20
     w = 500
-    def __init__(self,start,dirnx=1,dirny=0,color=(255,0,0)):
+    def __init__(self,start,dirnx=1,dirny=0,color=(51,80,212)): #snake's blue 
         self.pos = start
         self.dirnx = 0
         self.dirny = 0
@@ -28,14 +28,15 @@ class cube(object):
         i = self.pos[0]
         j = self.pos[1]
  
-        pygame.draw.rect(surface, self.color, (i*dis+1,j*dis+1, dis-2, dis-2))
-        if eyes:
+        pygame.draw.rect(surface, self.color, (i*dis+1,j*dis+1, dis-2, dis-2)) #draws the cube inside the grid lines 
+
+        if eyes: 
             centre = dis//2
             radius = 3
-            circleMiddle = (i*dis+centre-radius,j*dis+8)
-            circleMiddle2 = (i*dis + dis -radius*2, j*dis+8)
-            pygame.draw.circle(surface, (0,0,0), circleMiddle, radius)
-            pygame.draw.circle(surface, (0,0,0), circleMiddle2, radius)
+            circleMiddle = (i * dis + centre - radius*2,j*dis+10)
+            circleMiddle2 = (i * dis + dis - radius*2, j*dis+10)
+            pygame.draw.circle(surface, (252, 252, 252), circleMiddle, radius) #white eyes drawn
+            pygame.draw.circle(surface, (252, 252, 252), circleMiddle2, radius)
        
  
  
@@ -140,7 +141,7 @@ def drawGrid(w, rows, surface):
        
  
 def redrawWindow(surface):
-    surface.fill((0,0,0))
+    surface.fill((51,161,66)) #surface light green 
     s.draw(surface)
     snack.draw(surface)
     drawGrid(width, rows, surface)
@@ -178,8 +179,8 @@ def main():
     width = 500
     rows = 20
     win = pygame.display.set_mode((width, width))    # tutaj umiejscowic score wyzej 
-    s = snake((255,0,0), (10,10))  #red snake, start position 
-    snack = cube(randomSnack(rows, s), color=(0,255,0))
+    s = snake((255,0,0), (10,10))  #red snake, start position  WCALE NIE RED WTF 
+    snack = cube(randomSnack(rows, s), color=(255,0,0))
     run = True
  
     clock = pygame.time.Clock()
@@ -190,7 +191,7 @@ def main():
         s.move()
         if s.body[0].pos == snack.pos:
             s.addCube()
-            snack = cube(randomSnack(rows, s), color=(0,255,0))
+            snack = cube(randomSnack(rows, s), color=(255,0,0))
  
         for x in range(len(s.body)):
             if s.body[x].pos in list(map(lambda z:z.pos,s.body[x+1:])):
