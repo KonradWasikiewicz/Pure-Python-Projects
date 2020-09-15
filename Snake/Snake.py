@@ -1,14 +1,13 @@
 #https://www.youtube.com/watch?v=CD4qAhfFuLo   # 18:39 powinna juz si eplansza wyswietlac 
 #https://pastebin.com/embed_js/jB6k06hG 
 
-
 import math
 import random
 import pygame
 import tkinter as tk
 from tkinter import messagebox
 
- 
+pygame.init()
 
 class cube(object):
     rows = 20
@@ -130,23 +129,22 @@ class snake(object):
  
 def drawGrid(w, rows, surface):
     sizeBtwn = w // rows
- 
     x = 0
     y = 0
     for l in range(rows):
         x = x + sizeBtwn
         y = y + sizeBtwn
  
-        pygame.draw.line(surface, (255,255,255), (x,0),(x,w))
+        pygame.draw.line(surface, (255,255,255), (x,0),(x,w))  #draws two lines, horizontal and vertical 
         pygame.draw.line(surface, (255,255,255), (0,y),(w,y))
        
  
 def redrawWindow(surface):
-    global rows, width, s, snack
+    global rows, width, s, snack   #necessary? nic nie zmieniamy, tylko sie powołujemy  
     surface.fill((0,0,0))
     s.draw(surface)
     snack.draw(surface)
-    drawGrid(width,rows, surface)
+    drawGrid(width, rows, surface)
     pygame.display.update()
  
  
@@ -175,21 +173,21 @@ def message_box(subject, content):
     except:
         pass
  
- 
+#mainloop 
 def main():
     global width, rows, s, snack
     width = 500
     rows = 20
-    win = pygame.display.set_mode((width, width))
-    s = snake((255,0,0), (10,10))
+    win = pygame.display.set_mode((width, width))    # tutaj umiejscowic score wyzej 
+    s = snake((255,0,0), (10,10))  #red snake, start position 
     snack = cube(randomSnack(rows, s), color=(0,255,0))
-    flag = True
+    run = True
  
     clock = pygame.time.Clock()
    
-    while flag:
-        pygame.time.delay(50)
-        clock.tick(10)
+    while run:
+        pygame.time.delay(50)  #speed control  the lower the faster
+        clock.tick(10)     #speed control      the lower the slower
         s.move()
         if s.body[0].pos == snack.pos:
             s.addCube()
