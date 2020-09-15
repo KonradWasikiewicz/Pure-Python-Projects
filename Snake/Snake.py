@@ -1,7 +1,7 @@
 #https://www.youtube.com/watch?v=CD4qAhfFuLo    
 #https://pastebin.com/embed_js/jB6k06hG 
 
-#features: leaderboard, score at the top 
+#features: leaderboard, score at the top, bug z tym zawracaniem 
 
 import math
 import random
@@ -20,7 +20,7 @@ class cube(object):
     w = 500
     def __init__(self, start, dirnx = 1, dirny = 0, color = blue):  
         self.pos = start
-        self.dirnx = 1  #makes snake go right 
+        self.dirnx = 1  #makes snake go right at the beginning 
         self.dirny = 0
         self.color = color
         
@@ -158,7 +158,7 @@ def randomSnack(rows, item):
     while True:
         x = random.randrange(rows)
         y = random.randrange(rows)
-        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:  #making sure the snack wont bne added at the top of the snake 
+        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:  #making sure snack won't be added at the top of the snake 
             continue
         else:
             break
@@ -182,14 +182,14 @@ def main():
     width = 500
     rows = 20
     win = pygame.display.set_mode((width, width))    # tutaj umiejscowic score wyzej 
-    s = snake((255,0,0), (10,10))  #snake's starting position  
+    s = snake(blue, (10,10))  #snake's starting position  
     snack = cube(randomSnack(rows, s), color = red)
     run = True
  
     clock = pygame.time.Clock()
    
     while run:
-        pygame.time.delay(50)  #speed control  the lower the faster
+        pygame.time.delay(40)  #speed control  the lower the faster
         clock.tick(10)     #speed control      the lower the slower
         s.move()
         if s.body[0].pos == snack.pos:
@@ -200,8 +200,7 @@ def main():
             message_box('You Lost!', 'Your score is {}'.format(len(s.body)))
             s.reset((10,10))
             break
- 
-           
+            
         redrawWindow(win) 
  
 main()
