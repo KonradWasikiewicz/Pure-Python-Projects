@@ -45,23 +45,23 @@ class snake(object):
     turns = {}
     def __init__(self, color, pos):
         self.color = color
-        self.head = cube(pos)
+        self.head = cube(pos)   #head is defined as a function of cube 
         self.body.append(self.head)
         self.dirnx = 0
         self.dirny = 1
  
-    def move(self):
+    def move(self):   #defining how the body follows snake's head 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
  
-            keys = pygame.key.get_pressed()
+            keys = pygame.key.get_pressed() #gets a dictionary of all the key values and if they were pressed
  
-            for key in keys:
+            for key in keys:   #defining what is going to happen when we hit defined keys 
                 if keys[pygame.K_LEFT]:
-                    self.dirnx = -1
+                    self.dirnx = -1  #point (0,0) is in the upper left corner, so -1 takes us closer to 0. Others per analogiam
                     self.dirny = 0
-                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
+                    self.turns[self.head.pos[:]] = [self.dirnx, self.dirny] #we are adding a key to the dict above that is the current pos of the head of our snake
  
                 elif keys[pygame.K_RIGHT]:
                     self.dirnx = 1
@@ -79,8 +79,8 @@ class snake(object):
                     self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
  
         for i, c in enumerate(self.body):
-            p = c.pos[:]
-            if p in self.turns:
+            p = c.pos[:]    
+            if p in self.turns:   #we are going to move to the direction describes by 'self.turns'
                 turn = self.turns[p]
                 c.move(turn[0],turn[1])
                 if i == len(self.body)-1:
@@ -204,7 +204,7 @@ def main():
         redrawWindow(win)
  
        
-    pass
+    
  
  
  
