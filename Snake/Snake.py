@@ -33,14 +33,11 @@ class cube(object):
         if eyes: 
             centre = dis//2
             radius = 3
-            circleMiddle = (i * dis + centre - radius*2,j*dis+10)
+            circleMiddle = (i * dis + centre - radius*2,j*dis+10)   #eyes position 
             circleMiddle2 = (i * dis + dis - radius*2, j*dis+10)
             pygame.draw.circle(surface, (252, 252, 252), circleMiddle, radius) #white eyes drawn
             pygame.draw.circle(surface, (252, 252, 252), circleMiddle2, radius)
        
- 
- 
- 
 class snake(object):
     body = []   #we add to that as we eat 
     turns = {}  #we add to that as we turn 
@@ -107,7 +104,7 @@ class snake(object):
         tail = self.body[-1]
         dx, dy = tail.dirnx, tail.dirny
  
-        if dx == 1 and dy == 0:
+        if dx == 1 and dy == 0:   #add tail at the end, to the opposite direction of snake's move 
             self.body.append(cube((tail.pos[0]-1,tail.pos[1])))
         elif dx == -1 and dy == 0:
             self.body.append(cube((tail.pos[0]+1,tail.pos[1])))
@@ -155,7 +152,7 @@ def randomSnack(rows, item):
     while True:
         x = random.randrange(rows)
         y = random.randrange(rows)
-        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
+        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:  #making sure the snack wont bne added at the top of the snake 
             continue
         else:
             break
@@ -201,11 +198,6 @@ def main():
                 break
  
            
-        redrawWindow(win)
- 
-       
-    
- 
- 
+        redrawWindow(win) 
  
 main()
