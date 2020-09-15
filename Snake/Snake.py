@@ -14,7 +14,7 @@ class cube(object):
     w = 500
     def __init__(self,start,dirnx=1,dirny=0,color=(255,0,0)):
         self.pos = start
-        self.dirnx = 1
+        self.dirnx = 0
         self.dirny = 0
         self.color = color
         
@@ -41,8 +41,8 @@ class cube(object):
  
  
 class snake(object):
-    body = []
-    turns = {}
+    body = []   #we add to that as we eat 
+    turns = {}  #we add to that as we turn 
     def __init__(self, color, pos):
         self.color = color
         self.head = cube(pos)   #head is defined as a function of cube 
@@ -52,7 +52,7 @@ class snake(object):
  
     def move(self):   #defining how the body follows snake's head 
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT:   #makes quitting possible via clicking the upper right red button 
                 pygame.quit()
  
             keys = pygame.key.get_pressed() #gets a dictionary of all the key values and if they were pressed
@@ -78,19 +78,19 @@ class snake(object):
                     self.dirny = 1
                     self.turns[self.head.pos[:]] = [self.dirnx, self.dirny]
  
-        for i, c in enumerate(self.body):
+        for i, c in enumerate(self.body):  #i = index, c = cube type object 
             p = c.pos[:]    
             if p in self.turns:   #we are going to move to the direction describes by 'self.turns'
                 turn = self.turns[p]
                 c.move(turn[0],turn[1])
-                if i == len(self.body)-1:
+                if i == len(self.body)-1: 
                     self.turns.pop(p)
-            else:
+            else:  #what to do when we are reaching the end of the screen -> transfer to the other side of the map
                 if c.dirnx == -1 and c.pos[0] <= 0: c.pos = (c.rows-1, c.pos[1])
                 elif c.dirnx == 1 and c.pos[0] >= c.rows-1: c.pos = (0,c.pos[1])
                 elif c.dirny == 1 and c.pos[1] >= c.rows-1: c.pos = (c.pos[0], 0)
                 elif c.dirny == -1 and c.pos[1] <= 0: c.pos = (c.pos[0],c.rows-1)
-                else: c.move(c.dirnx,c.dirny)
+                else: c.move(c.dirnx, c.dirny) #if not at the end, move forward  
        
  
     def reset(self, pos):
@@ -122,7 +122,7 @@ class snake(object):
     def draw(self, surface):
         for i, c in enumerate(self.body):
             if i ==0:
-                c.draw(surface, True)
+                c.draw(surface, True) #if True, draw eyes at the first cube 
             else:
                 c.draw(surface)
  
@@ -140,7 +140,6 @@ def drawGrid(w, rows, surface):
        
  
 def redrawWindow(surface):
-    global rows, width, s, snack   #necessary? nic nie zmieniamy, tylko sie powołujemy  
     surface.fill((0,0,0))
     s.draw(surface)
     snack.draw(surface)
