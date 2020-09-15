@@ -1,5 +1,7 @@
-#https://www.youtube.com/watch?v=CD4qAhfFuLo   # 18:39 powinna juz si eplansza wyswietlac 
+#https://www.youtube.com/watch?v=CD4qAhfFuLo    
 #https://pastebin.com/embed_js/jB6k06hG 
+
+#features: leaderboard, score at the top 
 
 import math
 import random
@@ -7,14 +9,18 @@ import pygame
 import tkinter as tk
 from tkinter import messagebox
 
-pygame.init()
+#RGB color scale numbers
+blue = (51,80,212)
+white = (252, 252, 252)
+red = (255,0,0)
+green = (51,161,66)
 
 class cube(object):
     rows = 20
     w = 500
-    def __init__(self,start,dirnx=1,dirny=0,color=(51,80,212)): #snake's blue 
+    def __init__(self, start, dirnx = 1, dirny = 0, color = blue):  
         self.pos = start
-        self.dirnx = 0
+        self.dirnx = 1  #makes snake go right 
         self.dirny = 0
         self.color = color
         
@@ -35,8 +41,8 @@ class cube(object):
             radius = 3
             circleMiddle = (i * dis + centre - radius*2,j*dis+10)   #eyes position 
             circleMiddle2 = (i * dis + dis - radius*2, j*dis+10)
-            pygame.draw.circle(surface, (252, 252, 252), circleMiddle, radius) #white eyes drawn
-            pygame.draw.circle(surface, (252, 252, 252), circleMiddle2, radius)
+            pygame.draw.circle(surface, white, circleMiddle, radius) #white eyes drawn
+            pygame.draw.circle(surface, white, circleMiddle2, radius)
        
 class snake(object):
     body = []   #we add to that as we eat 
@@ -133,12 +139,12 @@ def drawGrid(w, rows, surface):
         x = x + sizeBtwn
         y = y + sizeBtwn
  
-        pygame.draw.line(surface, (255,255,255), (x,0),(x,w))  #draws two lines, horizontal and vertical 
-        pygame.draw.line(surface, (255,255,255), (0,y),(w,y))
+        pygame.draw.line(surface, white, (x,0),(x,w))  #draws two lines, horizontal and vertical 
+        pygame.draw.line(surface, white, (0,y),(w,y))
        
  
 def redrawWindow(surface):
-    surface.fill((51,161,66)) #surface light green 
+    surface.fill(green)  
     s.draw(surface)
     snack.draw(surface)
     drawGrid(width, rows, surface)
@@ -162,7 +168,7 @@ def randomSnack(rows, item):
  
 def message_box(subject, content):
     root = tk.Tk()
-    root.attributes("-topmost", True)
+    root.attributes("-topmost", True) #window comes up top on everything 
     root.withdraw()
     messagebox.showinfo(subject, content)
     try:
@@ -176,8 +182,8 @@ def main():
     width = 500
     rows = 20
     win = pygame.display.set_mode((width, width))    # tutaj umiejscowic score wyzej 
-    s = snake((255,0,0), (10,10))  #red snake, start position  WCALE NIE RED WTF 
-    snack = cube(randomSnack(rows, s), color=(255,0,0))
+    s = snake((255,0,0), (10,10))  #snake's starting position  
+    snack = cube(randomSnack(rows, s), color = red)
     run = True
  
     clock = pygame.time.Clock()
@@ -188,14 +194,12 @@ def main():
         s.move()
         if s.body[0].pos == snack.pos:
             s.addCube()
-            snack = cube(randomSnack(rows, s), color=(255,0,0))
+            snack = cube(randomSnack(rows, s), color = red)
  
-        for x in range(len(s.body)):
-            if s.body[x].pos in list(map(lambda z:z.pos,s.body[x+1:])):
-                print('Score: ', len(s.body))
-                message_box('You Lost!', 'Play again...')
-                s.reset((10,10))
-                break
+        if s.body[0].pos in list(map(lambda z:z.pos,s.body[1:])):
+            message_box('You Lost!', 'Your score is {}'.format(len(s.body)))
+            s.reset((10,10))
+            break
  
            
         redrawWindow(win) 
