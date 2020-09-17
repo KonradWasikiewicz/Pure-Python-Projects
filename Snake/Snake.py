@@ -140,8 +140,7 @@ def drawGrid(w, rows, surface):
         y = y + sizeBtwn
  
         pygame.draw.line(surface, white, (x,0),(x,w))  #draws two lines, horizontal and vertical 
-        pygame.draw.line(surface, white, (0,y),(w,y))
-       
+        pygame.draw.line(surface, white, (0,y),(w,y))  
  
 def redrawWindow(surface):
     surface.fill(green)  
@@ -185,7 +184,6 @@ def main():
     s = snake(blue, (10,10))  #snake's starting position  
     snack = cube(randomSnack(rows, s), color = red)
     run = True
- 
     clock = pygame.time.Clock()
    
     while run:
