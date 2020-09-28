@@ -46,7 +46,7 @@ class BubbleSort(Algorithm):
     def algorithm(self):
         for iteration in range(len(self.array)):   
             for i in range(len(self.array) -1 -iteration): # as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
-                if self.array[i] > self[i+1]:
+                if self.array[i] > self.array[i+1]:
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  # elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
 
@@ -68,27 +68,27 @@ class MergeSort(Algorithm):
         # iterator used to keep track of the result list 
             k = 0
         
-        while i < len(left) and j < len(right):
-            if left[i] < right[i]:
-                # use the left value first 
+            while i < len(left) and j < len(right):
+                if left[i] < right[j]:
+                    # use the left value first 
+                    self.array[k] = left[i]
+                    # move the iterator to the next number
+                    i += 1
+                else:
+                    # use the right value first
+                    self.array[k] = right[j]
+                    # move the iterator to the next number
+                    j += 1 
+                # next number on the main list
+                k += 1 
+            self.update_display()
+            # the other value from the pair 
+            while i < len(left):
                 self.array[k] = left[i]
-                # move the iterator to the next number
                 i += 1
-            else:
-                # use the right value first
-                self.array[k]
-                # move the iterator to the next number
-                j += 1 
-            # next number on the main list
-            k += 1 
-
-        # the other value from the pair 
-        while i < len(left):
-            self.array[k] = left[i]
-            i += 1
-            k += 1 
-        while j < len(right):
-            self.array[k] = right[j]
-            j += 1
-            k += 1 
-        self.update_display()
+                k += 1 
+            while j < len(right):
+                self.array[k] = right[j]
+                j += 1
+                k += 1 
+            self.update_display()
