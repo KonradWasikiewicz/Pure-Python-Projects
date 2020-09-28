@@ -55,13 +55,21 @@ class MergeSort(Algorithm):
     def __init__(self):
         super().__init__("MergeSort")
 
-    def algorithm(self, array = []):            #zweryfikuj prosze potrzebe definiowania array 
-        if array == []:
-            array = self.array
-        middle = len(self.array) // 2
-        right_list = self.algorithm(array[middle:])
-        left_list = self.algorithm(array[:middle])
-        return self.merge(left_list,right_list)
-
-    def merge(self, left_list, right_list):
-        i, j = 0, 0
+    def algorithm(self):           
+        if len(self.array) > 1:
+            middle = len(self.array) // 2
+            left = self.array[:middle]
+            right = self.array[middle:]
+        # recurvise call on left and right, so that we end up with 1 element of right and left each
+            algorithm(left)
+            algorithm(right)
+        # iterators used for traversing each of the two lists
+            i, j = 0, 0
+        # iterator used to keep track of the result list 
+            k = 0
+        
+        while i < len(left) and j < len(right):
+            if left[i] < right[i]:
+                # use the left value first 
+                self.array[k] = left[i]
+                # move the 
