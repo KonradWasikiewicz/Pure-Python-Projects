@@ -14,6 +14,9 @@ Non-comparison based sorts:
 radix, count, bucket 
 
 """
+import random
+import matplotlib.pyplot as plt
+import matplotlib.animation as anim
 
 
 #miejsce na import i zmienne globalen
@@ -41,3 +44,10 @@ class Algorithm:
 class BubbleSort(Algorithm):
     def __init__(self):
         super().__init__("BubbleSort")
+
+    def algorithm(self):
+        for i in range(len(self.array)):
+            for j in range(len(self.array)-1):
+                if self.array[j] > self[j+1]:
+                    self.array[j], self.array[j+1] = self.array[j+1], self.array[j]
+                    
