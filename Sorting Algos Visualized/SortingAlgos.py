@@ -45,9 +45,9 @@ class BubbleSort(Algorithm):
         super().__init__("BubbleSort")
     def algorithm(self):
         for iteration in range(len(self.array)):   
-            for i in range(len(self.array) -1 -iteration): #as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
+            for i in range(len(self.array) -1 -iteration): # as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
                 if self.array[i] > self[i+1]:
-                    self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
+                    self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  # elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
 
 ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
@@ -60,7 +60,7 @@ class MergeSort(Algorithm):
             middle = len(self.array) // 2
             left = self.array[:middle]
             right = self.array[middle:]
-        # recurvise call on left and right, so that we end up with 1 element of right and left each
+        # recurvise call on left and right, so that we end up with 1 element of right and left each (single pair)
             algorithm(left)
             algorithm(right)
         # iterators used for traversing each of the two lists
@@ -72,4 +72,23 @@ class MergeSort(Algorithm):
             if left[i] < right[i]:
                 # use the left value first 
                 self.array[k] = left[i]
-                # move the 
+                # move the iterator to the next number
+                i += 1
+            else:
+                # use the right value first
+                self.array[k]
+                # move the iterator to the next number
+                j += 1 
+            # next number on the main list
+            k += 1 
+
+        # the other value from the pair 
+        while i < len(left):
+            self.array[k] = left[i]
+            i += 1
+            k += 1 
+        while j < len(right):
+            self.array[k] = right[j]
+            j += 1
+            k += 1 
+        self.update_display()
