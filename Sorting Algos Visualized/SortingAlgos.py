@@ -16,7 +16,7 @@ radix, count, bucket
 """
 import random
 import matplotlib.pyplot as plt
-import matplotlib.animation as anim
+import matplotlib.animation as anim   #chyba niekoniecznie jak bedzie oddzielny plik na visualizer 
 
 
 #miejsce na import i zmienne globalen
@@ -40,20 +40,30 @@ class Algorithm:
 
 
 '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
-
 class BubbleSort(Algorithm):
     def __init__(self):
-        super().__init__("BubbleSort")``
-
+        super().__init__("BubbleSort")
     def algorithm(self):
         for iteration in range(len(self.array)):   
             for i in range(len(self.array) -1 -iteration): #as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
                 if self.array[i] > self[i+1]:
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
+            self.update_display(self.array[i], self.array[i+1])
 
+''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
 class MergeSort(Algorithm):
     def __init__(self):
         super().__init__("MergeSort")
 
-    def algorithm(self):
+    def algorithm(self, array = []):            #zweryfikuj prosze potrzebe definiowania array 
+        if array == []:
+            array = self.array
+        middle = len(self.array) // 2
+        right_list = self.algorithm(array[middle:])
+        left_list = self.algorithm(array[:middle])
+        return self.merge(left_list,right_list)
+
+    def merge(self, left_list, right_list):
+
+
  
