@@ -64,6 +64,4 @@ class MergeSort(Algorithm):
         return self.merge(left_list,right_list)
 
     def merge(self, left_list, right_list):
-
-
- 
+        i, j = 0, 0
