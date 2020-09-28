@@ -43,11 +43,17 @@ class Algorithm:
 
 class BubbleSort(Algorithm):
     def __init__(self):
-        super().__init__("BubbleSort")
+        super().__init__("BubbleSort")``
 
     def algorithm(self):
-        for i in range(len(self.array)):
-            for j in range(len(self.array)-1):
-                if self.array[j] > self[j+1]:
-                    self.array[j], self.array[j+1] = self.array[j+1], self.array[j]
-                    
+        for iteration in range(len(self.array)):   
+            for i in range(len(self.array) -1 -iteration): #as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
+                if self.array[i] > self[i+1]:
+                    self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
+
+class MergeSort(Algorithm):
+    def __init__(self):
+        super().__init__("MergeSort")
+
+    def algorithm(self):
+ 
