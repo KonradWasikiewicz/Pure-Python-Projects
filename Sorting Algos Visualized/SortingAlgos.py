@@ -7,7 +7,7 @@ https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
 https://www.educative.io/edpresso/merge-sort-in-python
 
 Comparison based sorts:
-bubble, insertion, quick, selection, merge, heap
+bubble, insertion, quick, selection, merge, heap, shell 
 
 Non-comparison based sorts:
 
@@ -136,7 +136,7 @@ class QuickSort(Algorithm):
         
         return high                                                                       # moze niepotrzebne?
 
-'''Selection sort - finding minimum value in an array and swapping it with nth element, so that each time we iterate the analyzed array becomes shorter'''
+'''Selection sort - finding minimum value in an array and swapping it with nth element (beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
 class SelectionSort(Algorithm):
     def __init__(self):
         super().__init__("SelectionSort")
@@ -149,3 +149,20 @@ class SelectionSort(Algorithm):
                     min_id = j
             self.array[i], self.array[min_id] = self.array[min_id], self.array[i]
             self.update_display(self.array[i], self.array[min_id])
+
+'''Insertion sort - comparing element n with n-1 and if n-1 bigger than n, swapping it. 
+    If not iterating through the list to the very beginning to place it correctly'''
+
+class InsertionSort(Algorithm):
+    def __init__(self):
+        super().__init__("InsertionSort")
+
+    def algorithm(self):
+        for i in range(len(self.array)):
+            nth_element = self.array[i]
+            x = i-1
+            while x >= 0 and self.array[x] > nth_element:
+                self.array[x+1] = self.array[x]
+                x -= 1
+            self.array[x+1] = nth_element
+            self.update_display(self.array[x], self.array[i])
