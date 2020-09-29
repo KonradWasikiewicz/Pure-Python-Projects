@@ -135,3 +135,17 @@ class QuickSort(Algorithm):
         self.update_display(array[start], array[high])
         
         return high                                                                       # moze niepotrzebne?
+
+'''Selection sort - finding minimum value in an array and swapping it with nth element, so that each time we iterate the analyzed array becomes shorter'''
+class SelectionSort(Algorithm):
+    def __init__(self):
+        super().__init__("SelectionSort")
+
+    def algorithm(self):
+        for i in range(len(self.array)):
+            min_id = i
+            for j in range(i+1, len(self.array)):
+                if self.array[j] < self.array[min_id]:
+                    min_id = j
+            self.array[i], self.array[min_id] = self.array[min_id], self.array[i]
+            self.update_display(self.array[i], self.array[min_id])
