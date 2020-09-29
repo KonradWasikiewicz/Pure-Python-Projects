@@ -115,18 +115,13 @@ class QuickSort(Algorithm):
         high = end
     
         while True:
-            # If the current value we're looking at is larger than the pivot
-            # it's in the right place (right side of pivot) and we can move left,
-            # to the next element.
-            # We also need to make sure we haven't surpassed the low pointer, since that
-            # indicates we have already moved all the elements to their correct side of the pivot
+            #If the current value we're looking at is larger than the pivot it's in the right place (right side of pivot) and we can move left,
+            #to the next element. We also need to make sure we haven't passed the low point, since that indicates we have already moved all the elements to their correct side of the pivot
             while low <= high and array[high] >= pivot:
                 high = high - 1
-    
             # Opposite process of the one above
             while low <= high and array[low] <= pivot:
                 low = low + 1
-    
             # We either found a value for both high and low that is out of order
             # or low is higher than high, in which case we exit the loop
             if low <= high:
@@ -139,4 +134,4 @@ class QuickSort(Algorithm):
         array[start], array[high] = array[high], array[start]
         self.update_display(array[start], array[high])
         
-        return high
+        return high                                                                       # moze niepotrzebne?
