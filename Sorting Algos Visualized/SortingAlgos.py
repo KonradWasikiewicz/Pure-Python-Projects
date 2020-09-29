@@ -56,7 +56,7 @@ class MergeSort(Algorithm):
         super().__init__("MergeSort")
 
     def algorithm(self, array = []):           
-        if array = []:
+        if array == []:
             array = self.array
         if len(self.array) > 1:
             middle = len(self.array) // 2
@@ -101,7 +101,7 @@ class QuickSort(Algorithm):
         super().__init__("QuickSort")
 
     def algorithm(self, array = [], start=0, end=len(array) - 1):
-        if array = []:
+        if array == []:
             array = self.array
         if start >=  end:
             return 
