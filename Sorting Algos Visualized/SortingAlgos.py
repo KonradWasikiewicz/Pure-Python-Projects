@@ -169,13 +169,34 @@ class InsertionSort(Algorithm):
             self.update_display(self.array[x], self.array[i])
 
 
-'''Shell sort - '''
+'''Shell sort - take a half of the original array, '''
 
 class ShellSort(Algorithm):
     def __init__(self):
         super().__init__("ShellSort")
 
     def algorithm(self):
+        gap = len(self.array) // 2
+        while gap > 0:
+            for i in range(gap, len(self.array)):
+                temp = self.array[i]
+                j = i
+    # Sort the sub list for this gap
+
+                while j >= gap and self.array[j - gap] > temp:
+                    self.array[j] = self.array[j - gap]
+                    j = j-gap
+                self.array[j] = temp
+
+    # Reduce the gap for the next element
+
+            gap = gap//2
+
+ 
+# kiedy i jak self.update_display(self.array[x], self.array[i])
+
+
+
 
 '''Heap sort - '''
 
