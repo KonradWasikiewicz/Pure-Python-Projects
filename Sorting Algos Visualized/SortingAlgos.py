@@ -2,9 +2,8 @@
 
 https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/
 https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.htm
-https://medium.com/towards-artificial-intelligence/visualize-interesting-sorting-algorithms-with-python-bdd64bdd0713
 https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
-https://www.educative.io/edpresso/merge-sort-in-python
+ 
 
 Comparison based sorts:
 bubble, insertion, quick, selection, merge, heap, shell 
@@ -63,8 +62,8 @@ class MergeSort(Algorithm):
             left = self.array[:middle]
             right = self.array[middle:]
         # recurvise call on left and right, so that we end up with 1 element of right and left each (single pair)
-            algorithm(left)
-            algorithm(right)
+            self.algorithm(left)
+            self.algorithm(right)
         # iterators used for traversing each of the two lists
             i, j = 0, 0
         # iterator used to keep track of the result list 
@@ -100,9 +99,10 @@ class QuickSort(Algorithm):
     def __init__(self):
         super().__init__("QuickSort")
 
-    def algorithm(self, array = [], start=0, end=len(array) - 1):
+    def algorithm(self, array = [], start = 0, end = 0):
         if array == []:
             array = self.array
+            end = len(array) - 1
         if start >=  end:
             return 
         pivot = self.partition(array,start,end)
@@ -136,7 +136,8 @@ class QuickSort(Algorithm):
         
         return high                                                                       # moze niepotrzebne?
 
-'''Selection sort - finding minimum value in an array and swapping it with nth element (beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
+'''Selection sort - finding minimum value in an array and swapping it with nth element 
+(beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
 class SelectionSort(Algorithm):
     def __init__(self):
         super().__init__("SelectionSort")
@@ -166,3 +167,20 @@ class InsertionSort(Algorithm):
                 x -= 1
             self.array[x+1] = nth_element
             self.update_display(self.array[x], self.array[i])
+
+
+'''Shell sort - '''
+
+class ShellSort(Algorithm):
+    def __init__(self):
+        super().__init__("ShellSort")
+
+    def algorithm(self):
+
+'''Heap sort - '''
+
+class HeapSort(Algorithm):
+    def __init__(self):
+        super().__init__("HeapSort")
+
+    def algorithm(self):
