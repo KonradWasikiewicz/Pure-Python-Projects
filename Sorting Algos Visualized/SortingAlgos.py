@@ -23,13 +23,13 @@ import matplotlib.animation as anim   #chyba niekoniecznie jak bedzie oddzielny 
 class Algorithm:
     def __init__(self, name):
         self.array = random.sample(range(512), 512) # Random array of size 512
-        self.name = name # Get name of the variable
+        self.name = name #get name of the variable
 
     def update_display(self, swap1=None, swap2=None):                                                           # TO TRZEBA ZMIENIC 
         import visualizer
-        visualizer.update(self, swap1, swap2) # pass the indexes to be swapped into the visualizer
+        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
-    def run(self): # Start the timer and run the algorithm
+    def run(self): #start the timer and run the algorithm
         self.start_time = time.time() 
         self.algorithm()
         time_elapsed = time.time() - self.start_time
@@ -44,9 +44,9 @@ class BubbleSort(Algorithm):
         super().__init__("BubbleSort")
     def algorithm(self):
         for iteration in range(len(self.array)):   
-            for i in range(len(self.array) -1 -iteration): # as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
+            for i in range(len(self.array) -1 -iteration): #as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
                 if self.array[i] > self.array[i+1]:
-                    self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  # elements swap takes place here
+                    self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
 
 ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
@@ -61,29 +61,29 @@ class MergeSort(Algorithm):
             middle = len(self.array) // 2
             left = self.array[:middle]
             right = self.array[middle:]
-        # recurvise call on left and right, so that we end up with 1 element of right and left each (single pair)
+        #recurvise call on left and right, so that we end up with 1 element of right and left each (single pair)
             self.algorithm(left)
             self.algorithm(right)
-        # iterators used for traversing each of the two lists
+        #iterators used for traversing each of the two lists
             i, j = 0, 0
-        # iterator used to keep track of the result list 
+        #iterator used to keep track of the result list 
             k = 0
         
             while i < len(left) and j < len(right):
                 if left[i] < right[j]:
-                    # use the left value first 
+                    #use the left value first 
                     self.array[k] = left[i]
-                    # move the iterator to the next number
+                    #move the iterator to the next number
                     i += 1
                 else:
-                    # use the right value first
+                    #use the right value first
                     self.array[k] = right[j]
-                    # move the iterator to the next number
+                    #move the iterator to the next number
                     j += 1 
-                # next number on the main list
+                #next number on the main list
                 k += 1 
             self.update_display()
-            # the other value from the pair 
+            #the other value from the pair 
             while i < len(left):
                 self.array[k] = left[i]
                 i += 1
@@ -115,20 +115,20 @@ class QuickSort(Algorithm):
         high = end
     
         while True:
-            #If the current value we're looking at is larger than the pivot it's in the right place (right side of pivot) and we can move left,
+            #if the current value we're looking at is larger than the pivot it's in the right place (right side of pivot) and we can move left,
             #to the next element. We also need to make sure we haven't passed the low point, since that indicates we have already moved all the elements to their correct side of the pivot
             while low <= high and array[high] >= pivot:
                 high = high - 1
-            # Opposite process of the one above
+            #opposite process of the one above
             while low <= high and array[low] <= pivot:
                 low = low + 1
-            # We either found a value for both high and low that is out of order
-            # or low is higher than high, in which case we exit the loop
+            #we either found a value for both high and low that is out of order
+            #or low is higher than high, in which case we exit the loop
             if low <= high:
                 array[low], array[high] = array[high], array[low]
-                # The loop continues
+                #the loop continues
             else:
-                # We exit out of the loop
+                #we exit out of the loop
                 break
     
         array[start], array[high] = array[high], array[start]
@@ -169,35 +169,28 @@ class InsertionSort(Algorithm):
             self.update_display(self.array[x], self.array[i])
 
 
-'''Shell sort - take a half of the original array, '''
+'''Shell sort - take a second half of the array and compare every element with an element from the first half'''
 
 class ShellSort(Algorithm):
     def __init__(self):
         super().__init__("ShellSort")
 
     def algorithm(self):
-        gap = len(self.array) // 2
+        gap = len(self.array) // 2 #cut the list in half
         while gap > 0:
-            for i in range(gap, len(self.array)):
-                temp = self.array[i]
+            for i in range(gap, len(self.array)): #analyze the second half first
+                temp = self.array[i] #value storage for the element that is being analyzed 
                 j = i
-    # Sort the sub list for this gap
 
-                while j >= gap and self.array[j - gap] > temp:
-                    self.array[j] = self.array[j - gap]
+                while j >= gap and self.array[j - gap] > temp: #compare the value with the corresponding element in the first half
+                    self.array[j] = self.array[j - gap] #if number in the first half is bigger than number in the second half, replace the second half value 
+                    self.update_display(self.array[j], self.array[j - gap]) #if it ain't bigger, iterate throught the first half to search for a smaller value 
                     j = j-gap
-                self.array[j] = temp
-
+                self.array[j] = temp #place the smaller value in the first half (if first half value is larger, if not - do not replace anything)
+                self.update_display(self.array[j], self.array[j - gap])
     # Reduce the gap for the next element
 
             gap = gap//2
-
- 
-# kiedy i jak self.update_display(self.array[x], self.array[i])
-
-
-
-
 '''Heap sort - '''
 
 class HeapSort(Algorithm):
