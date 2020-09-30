@@ -5,6 +5,8 @@ https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.h
 https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
  
 
+ https://www.programiz.com/dsa/heap-data-structure
+
 Comparison based sorts:
 bubble, insertion, quick, selection, merge, heap, shell 
 
@@ -191,7 +193,7 @@ class ShellSort(Algorithm):
     # Reduce the gap for the next element
 
             gap = gap//2
-'''Heap sort - '''
+'''Heap sort - based on heap data structure. '''
 
 class HeapSort(Algorithm):
     def __init__(self):
