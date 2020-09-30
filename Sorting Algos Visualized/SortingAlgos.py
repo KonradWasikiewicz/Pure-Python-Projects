@@ -169,10 +169,8 @@ class InsertionSort(Algorithm):
                 x -= 1
             self.array[x+1] = nth_element
             self.update_display(self.array[x], self.array[i])
-
-
+            
 '''Shell sort - take a second half of the array and compare every element with an element from the first half'''
-
 class ShellSort(Algorithm):
     def __init__(self):
         super().__init__("ShellSort")
