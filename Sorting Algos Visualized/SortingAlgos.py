@@ -200,3 +200,22 @@ class HeapSort(Algorithm):
     def algorithm(self):
 
         #https://www.youtube.com/watch?v=LbB357_RwlY&t=317s
+
+
+
+ list = [22,17,19,12,15,11,7,6,9,10,5]
+
+def heap_sort(list):
+    last_pos_pointer = len(list)-1  #defines iteration boundary
+
+    swap
+    
+    if list[0]
+    
+    #goto 
+    closest_node = max([(2*i+1),(2*i+2)])
+    
+    
+    
+    last_pos_pointer -= 1
+    
