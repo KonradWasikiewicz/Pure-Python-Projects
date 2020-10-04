@@ -26,8 +26,8 @@ display.fill(pygame.Color("#a48be0"))
 def check_events(): # Check if the pygame window was quit
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit();
-            sys.exit();
+            pygame.quit()
+            sys.exit()
 
 def update(algorithm, swap1=None, swap2=None, display=display): # The function responsible for drawing the sorted array on each iteration
     display.fill(pygame.Color("#a48be0"))
