@@ -4,8 +4,7 @@ https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/
 https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.htm
 https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
  
-
- https://www.programiz.com/dsa/heap-data-structure
+ 
 
 Comparison based sorts:
 bubble, insertion, quick, selection, merge, heap, shell 
@@ -199,7 +198,9 @@ class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def heap_it(self.array, arr_len, i):
+    def heap_it(array = [], arr_len, i):
+        if array == []:
+            array = self.array
         parent = i # point the parent element 
         left_node = 2*i + 1 # pre-defined formula for the left node 
         right_node = 2*i + 2 # pre-defined formula for the right node
