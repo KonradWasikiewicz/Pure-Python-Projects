@@ -213,6 +213,25 @@ def heap_sort(self):
             i += 1 
      last_pos_pointer -= 1
     
+ 
+ list = [22,17,19,12,15,11,7,6,9,10,5]
+
+
+def heap_it(self.array, arr_len, i):
+    parent = i # point the parent element 
+    left_node = 2*i + 1 # pre-defined formula for the left node 
+    right_node = 2*i + 2 # pre-defined formula for the right node
+
+def heap_sort(self):
+    last_pos_pointer = len(self.array)-1 # defines iteration boundary
+    arr_len = len(self.array)
+    
+    for i in range(last_pos_pointer,0,-1): # counting down the range
+            self.array[i], self.array[last_pos_pointer] = self.array[last_pos_pointer], self.array[i] #s
+
+            i += 1 
+     last_pos_pointer -= 1
+    
     if list[0]
     
     #goto 
@@ -221,48 +240,3 @@ def heap_sort(self):
     
     
     last_pos_pointer -= 1
-
-
-
-
-# To heapify subtree rooted at index i. 
-# n is size of heap 
-def heapify(arr, lenght, i): 
-    largest = i  # Initialize largest as root 
-    left = 2 * i + 1     # left = 2*i + 1 
-    right = 2 * i + 2     # right = 2*i + 2 
-  
-    # See if left child of root exists and is 
-    # greater than root 
-    if left < lenght and arr[i] < arr[left]: 
-        largest = left 
-  
-    # See if right child of root exists and is 
-    # greater than root 
-    if right < lenght and arr[largest] < arr[right]: 
-        largest = right 
-  
-    # Change root, if needed 
-    if largest != i: 
-        arr[i],arr[largest] = arr[largest],arr[i]  # swap 
-  
-        # Heapify the root. 
-        heapify(arr, n, largest) 
-  
-# The main function to sort an array of given size 
-def heapSort(arr): 
-    n = len(arr) 
-  
-    # Build a maxheap. 
-    # Since last parent will be at ((n//2)-1) we can start at that location. 
-    for i in range(n // 2 - 1, -1, -1): 
-        heapify(arr, n, i) 
-  
-    # One by one extract elements 
-    for i in range(n-1, 0, -1): 
-        arr[i], arr[0] = arr[0], arr[i]   # swap 
-        heapify(arr, i, 0) 
-  
-# Driver code to test above 
-arr = [ 12, 11, 13, 5, 6, 7] 
-heapSort(arr) 
