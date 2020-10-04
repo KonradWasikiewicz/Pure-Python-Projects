@@ -15,8 +15,6 @@ radix, count, bucket
 
 """
 import random
-import matplotlib.pyplot as plt
-import matplotlib.animation as anim   #chyba niekoniecznie jak bedzie oddzielny plik na visualizer 
 
 
 #miejsce na import i zmienne globalen
@@ -198,9 +196,18 @@ class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def heap_it(array = [], arr_len, i):
-        if array == []:
-            array = self.array
+    def algorithm(self):  
+        last_pos_pointer = len(self.array)-1 # defines iteration boundary
+        arr_len = len(self.array)
+        
+        for i in range(arr_len//2 -1, -1, -1):
+            heap_it(self.array, arr_len, i)
+            
+        for i in range(last_pos_pointer,0,-1): # counting down the range
+            self.array[i], self.array[0] = self.array[0], self.array[i] #swap
+            heap_it(self.array, i, 0)
+
+    def heap_it(self, arr_len, i):   """tutaj zamiast self bylo self.array ale byl blad"""
         parent = i # point the parent element 
         left_node = 2*i + 1 # pre-defined formula for the left node 
         right_node = 2*i + 2 # pre-defined formula for the right node
@@ -218,13 +225,3 @@ class HeapSort(Algorithm):
             # recurisve function to move it further down the array
             heap_it(self.array, arr_len, parent)
             
-    def algorithm(self):  
-        last_pos_pointer = len(self.array)-1 # defines iteration boundary
-        arr_len = len(self.array)
-        
-        for i in range(arr_len//2 -1, -1, -1):
-            heap_it(self.array, arr_len, i)
-            
-        for i in range(last_pos_pointer,0,-1): # counting down the range
-            self.array[i], self.array[0] = self.array[0], self.array[i] #swap
-            heap_it(self.array, i, 0)
