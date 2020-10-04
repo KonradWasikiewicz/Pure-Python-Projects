@@ -191,59 +191,39 @@ class ShellSort(Algorithm):
     # Reduce the gap for the next element
 
             gap = gap//2
-'''Heap sort - based on heap data structure. '''
+
+
+'''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.   '''
 
 class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def algorithm(self):
-
-        #https://www.youtube.com/watch?v=LbB357_RwlY&t=317s
-
-
-
- list = [22,17,19,12,15,11,7,6,9,10,5]
-
-def heap_sort(self):
-    last_pos_pointer = len(self.array)-1  #defines iteration boundary
-    for i in range(0,last_pos_pointer):
-            self.array[i], self.array[last_pos_pointer] = self.array[last_pos_pointer], self.array[i]
-
-            i += 1 
-     last_pos_pointer -= 1
-    
- 
-
-list = [22,17,19,12,15,11,7,6,9,10,5]
-
-
-def heap_it(self.array, arr_len, i):
-    parent = i # point the parent element 
-    left_node = 2*i + 1 # pre-defined formula for the left node 
-    right_node = 2*i + 2 # pre-defined formula for the right node
-    
-    # checking if left child as defined above is a part of the array and is greater than root 
-    if left_node < arr_len and self.array[i] < self.array[left_node]:
-        parent = left_node # switch root for the bigger element (so that the tree is valid)
-    # checking if right child as defined above is a part of the array and is greater than root 
-    if right_node < arr_len and self.array[i] < self.array[right_node]:
-        parent = left_node # switch root for the bigger element (so that the tree is valid)
-    # if parent has been modified, implement it into the array
-    if parent != i:
-        self.array[i], self.array[arr_len] = self.array[arr_len], self.array[i] 
+    def heap_it(self.array, arr_len, i):
+        parent = i # point the parent element 
+        left_node = 2*i + 1 # pre-defined formula for the left node 
+        right_node = 2*i + 2 # pre-defined formula for the right node
         
-        # recurisve function to move it further down the array
-        heap_it(self.array, arr_len, parent)
+        # checking if left child as defined above is a part of the array and is greater than root 
+        if left_node < arr_len and self.array[i] < self.array[left_node]:
+            parent = left_node # switch root for the bigger element (so that the tree is valid)
+        # checking if right child as defined above is a part of the array and is greater than root 
+        if right_node < arr_len and self.array[parent] < self.array[right_node]:
+            parent = right_node # switch root for the bigger element (so that the tree is valid)
+        # if parent has been modified, implement it into the array
+        if parent != i:
+            self.array[i], self.array[parent] = self.array[parent], self.array[i] 
+            
+            # recurisve function to move it further down the array
+            heap_it(self.array, arr_len, parent)
+            
+    def algorithm(self):  
+        last_pos_pointer = len(self.array)-1 # defines iteration boundary
+        arr_len = len(self.array)
         
-def heap_sort(self):  
-    last_pos_pointer = len(self.array)-1 # defines iteration boundary
-    arr_len = len(self.array)
-    
-    for i in range(arr_len//2 -1, -1, -1):
-        heap_it(self.arr, arr_len, i)
-        
-    
-    for i in range(last_pos_pointer,0,-1): # counting down the range
+        for i in range(arr_len//2 -1, -1, -1):
+            heap_it(self.array, arr_len, i)
+            
+        for i in range(last_pos_pointer,0,-1): # counting down the range
             self.array[i], self.array[0] = self.array[0], self.array[i] #swap
-            heap_it(self.arr, i, 0)
+            heap_it(self.array, i, 0)
