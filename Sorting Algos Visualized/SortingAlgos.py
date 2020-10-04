@@ -216,27 +216,37 @@ def heap_sort(self):
  
  list = [22,17,19,12,15,11,7,6,9,10,5]
 
-
 def heap_it(self.array, arr_len, i):
     parent = i # point the parent element 
     left_node = 2*i + 1 # pre-defined formula for the left node 
     right_node = 2*i + 2 # pre-defined formula for the right node
-
+    
+    # checking if left child as defined above is a part of the array and is greater than root 
+    if left_node < arr_len and self.array[i] < self.array[left_node]:
+        parent = left_node # switch root for the bigger element (so that the tree is valid)
+    # checking if right child as defined above is a part of the array and is greater than root 
+    if right_node < arr_len and self.array[i] < self.array[right_node]:
+        parent = left_node # switch root for the bigger element (so that the tree is valid)
+    # if parent has been modified, implement it into the array
+    if parent != i:
+        self.array[i], self.array[arr_len] = self.array[arr_len], self.array[i] 
+        
+        # recurisve function to move it further down the array
+        heap_it(self.array, arr_len, parent)
+        
 def heap_sort(self):
     last_pos_pointer = len(self.array)-1 # defines iteration boundary
     arr_len = len(self.array)
     
     for i in range(last_pos_pointer,0,-1): # counting down the range
             self.array[i], self.array[last_pos_pointer] = self.array[last_pos_pointer], self.array[i] #s
+            heap_it(self.arr, arr_len, i)
+
 
             i += 1 
      last_pos_pointer -= 1
     
     if list[0]
-    
-    #goto 
-    closest_node = max([(2*i+1),(2*i+2)])
-    
     
     
     last_pos_pointer -= 1
