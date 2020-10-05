@@ -207,7 +207,7 @@ class HeapSort(Algorithm):
             self.array[i], self.array[0] = self.array[0], self.array[i] #swap
             heap_it(self.array, i, 0)
 
-    def heap_it(self, arr_len, i):   """tutaj zamiast self bylo self.array ale byl blad"""
+    def heap_it(self, arr_len, i):  
         parent = i # point the parent element 
         left_node = 2*i + 1 # pre-defined formula for the left node 
         right_node = 2*i + 2 # pre-defined formula for the right node
