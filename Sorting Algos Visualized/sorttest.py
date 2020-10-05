@@ -9,9 +9,8 @@ screen = pygame.display.set_mode((900, 650))
 pygame.display.set_caption("SORTING VISUALISER") 
 # Place any custom png file in same folder as the source code 
 # and mention it below and uncomment below two lines. 
-# img = pygame.image.load 
-# ('E:/Projects / Sorting Visualiser / sorticon.png') 
-# pygame.display.set_icon(img) 
+img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-Projects\Sorting Algos Visualized\ikona.png') 
+pygame.display.set_icon(img) 
   
 # Boolean variable to run the program in while loop 
 run = True
