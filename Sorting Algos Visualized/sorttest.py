@@ -6,7 +6,7 @@ pygame.font.init()
 screen = pygame.display.set_mode((900, 650)) 
   
 # Title and Icon  
-pygame.display.set_caption("SORTING VISUALISER") 
+pygame.display.set_caption("Sorting algorithms visualized") 
 # Place any custom png file in same folder as the source code 
 # and mention it below and uncomment below two lines. 
 img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-Projects\Sorting Algos Visualized\ikona.png') 
