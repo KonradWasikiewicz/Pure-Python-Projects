@@ -1,19 +1,19 @@
 '''heap sort sie krzaczy
-nie ma mozliwosci wyboru algorytmu 
+nie ma mozliwosci wyboru algorytmu
 '''
 
-
-import SortingAlgos
 import time
 import os
 import sys
 import pygame
 
+import SortingAlgos
+
  # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
 dimensions = (1024, 512)
 # List all the algorithms available in the project in dictionary and call the necessary functions from algorithms.py
 SortingAlgos = {"SelectionSort": SortingAlgos.SelectionSort(), "BubbleSort": SortingAlgos.BubbleSort(), "InsertionSort": SortingAlgos.InsertionSort(), "MergeSort": SortingAlgos.MergeSort(), "QuickSort": SortingAlgos.QuickSort()}
- 
+
 # Set the dimensions of the window and display it
 display = pygame.display.set_mode(dimensions)
 # Fill the window with purple hue
@@ -48,7 +48,7 @@ def keep_open(algorithm, display, time): # Keep the window open until sort compl
 
 
 def main(args):
-    # Case: user failed to choose an algorithm    
+    # Case: user failed to choose an algorithm
     if len(args) < 2:
         print("Please select a sorting algorithm.")
     # Case: user requests list of algorithms
