@@ -1,3 +1,8 @@
+'''heap sort sie krzaczy
+nie ma mozliwosci wyboru algorytmu 
+'''
+
+
 import SortingAlgos
 import time
 import os
@@ -14,7 +19,7 @@ display = pygame.display.set_mode(dimensions)
 # Fill the window with purple hue
 display.fill(pygame.Color("#a48be0"))
 
-def check_events(): # Check if the pygame window was quit
+def check_events(): # Check if the pygame window was quit                         '''ZDECYDOWANIE DO PRZEKLEJKI'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
