@@ -191,21 +191,27 @@ class ShellSort(Algorithm):
 
 
 '''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.   '''
-
+'''
 class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def algorithm(self):  
-        last_pos_pointer = len(self.array)-1 # defines iteration boundary
-        arr_len = len(self.array)
+    def algorithm(self, array = []):
+        if array == []:
+            array = self.array  
+        last_pos_pointer = len(array)-1 # defines iteration boundary
+        arr_len = len(array)
         
         for i in range(arr_len//2 -1, -1, -1):
-            heap_it(self.array, arr_len, i)
-            
+            self.heap_it(array, arr_len, i)
+
+        self.update_display()
+
         for i in range(last_pos_pointer,0,-1): # counting down the range
-            self.array[i], self.array[0] = self.array[0], self.array[i] #swap
-            heap_it(self.array, i, 0)
+            array[i], array[0] = array[0], array[i] #swap
+            self.heap_it(array, i, 0)
+        
+        self.update_display()
 
     def heap_it(self, arr_len, i):  
         parent = i # point the parent element 
@@ -223,5 +229,7 @@ class HeapSort(Algorithm):
             self.array[i], self.array[parent] = self.array[parent], self.array[i] 
             
             # recurisve function to move it further down the array
-            heap_it(self.array, arr_len, parent)
+            self.heap_it(array, arr_len, parent)
+            
+            '''
             
