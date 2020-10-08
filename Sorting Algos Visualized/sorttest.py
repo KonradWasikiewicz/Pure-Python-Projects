@@ -1,21 +1,28 @@
-# Python implementation for visualizing merge sort.  
+"""problemy:
+* nie przerywa po nacisnieciu czerwonego buttona 
+* załadowac inne algorytmy 
+* relative path do lokalizacji ikony 
+"""
+
+
+# main file, responsible for visualizing algos defined in other files
+
 import pygame 
 import random 
-pygame.font.init() 
-# Total window 
+
+# total window size 
 screen = pygame.display.set_mode((900, 650)) 
   
-# Title and Icon  
+# title and icon settings 
 pygame.display.set_caption("Sorting algorithms visualized") 
-# Place any custom png file in same folder as the source code 
-# and mention it below and uncomment below two lines. 
+
 img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-Projects\Sorting Algos Visualized\ikona.png') 
 pygame.display.set_icon(img) 
   
-# Boolean variable to run the program in while loop 
+# boolean variable to run the program in while loop 
 run = True
   
-# Window size 
+# sorting window size 
 width = 900
 length = 600
 array =[0]*151
@@ -23,8 +30,11 @@ arr_clr =[(0, 204, 102)]*151
 clr_ind = 0
 clr =[(0, 204, 102), (255, 0, 0),  
 (0, 0, 153), (255, 102, 0)] 
-fnt = pygame.font.SysFont("comicsans", 30) 
+  
+pygame.font.init()  # initializing text, so that it can be shown within the app
+fnt = pygame.font.SysFont("comicsans", 30)  
 fnt1 = pygame.font.SysFont("comicsans", 20) 
+
 # Generate new Array 
 def generate_arr(): 
     for i in range(1, 151): 
@@ -128,5 +138,6 @@ while run:
                 mergesort(array, 1, len(array)-1)      
     draw() 
     pygame.display.update() 
-      
-pygame.quit() 
+   
+pygame.quit()
+ 

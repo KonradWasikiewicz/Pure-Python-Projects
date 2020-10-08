@@ -7,7 +7,7 @@ import pygame
  # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
 dimensions = [1024, 512]
 # List all the algorithms available in the project in dictionary and call the necessary functions from algorithms.py
-algorithms = {"SelectionSort": SortingAlgos.SelectionSort(), "BubbleSort": SortingAlgos.BubbleSort(), "InsertionSort": SortingAlgos.InsertionSort(), "MergeSort": SortingAlgos.MergeSort(), "QuickSort": SortingAlgos.QuickSort()}
+SortingAlgos = {"SelectionSort": SortingAlgos.SelectionSort(), "BubbleSort": SortingAlgos.BubbleSort(), "InsertionSort": SortingAlgos.InsertionSort(), "MergeSort": SortingAlgos.MergeSort(), "QuickSort": SortingAlgos.QuickSort()}
 
 # Check list of all the available sorting techniques using 'list'
 if len(sys.argv) > 1:
@@ -56,7 +56,7 @@ def main():
         print("Please select a sorting algorithm.") 
     else:
         try:
-            algorithm = algorithms[sys.argv[1]] # Pass the algorithm selected
+            algorithm = SortingAlgos[sys.argv[1]] # Pass the algorithm selected
             try:
                 time_elapsed = algorithm.run()[1]
                 keep_open(algorithm, display, time_elapsed)
