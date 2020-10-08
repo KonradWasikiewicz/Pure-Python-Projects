@@ -3,9 +3,7 @@
 https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/
 https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.htm
 https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
- 
- 
-
+  
 Comparison based sorts:
 bubble, insertion, quick, selection, merge, heap, shell 
 
@@ -14,28 +12,30 @@ Non-comparison based sorts:
 radix, count, bucket 
 
 """
+import time
 import random
-
+from abc import ABCMeta, abstractmethod
 
 #miejsce na import i zmienne globalen
 
-class Algorithm:
+class Algorithm(metaclass=ABCMeta):
     def __init__(self, name):
         self.array = random.sample(range(512), 512) # Random array of size 512
-        self.name = name #get name of the variable
+        self.name = name # Get name of the variable
 
-    def update_display(self, swap1=None, swap2=None):                                                           # TO TRZEBA ZMIENIC 
+    def update_display(self, swap1=None, swap2=None):
         import visualizer
-        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
+        visualizer.update(self, swap1, swap2) # pass the indexes to be swapped into the visualizer
 
-    def run(self): #start the timer and run the algorithm
+    def run(self): # Start the timer and run the algorithm
         self.start_time = time.time() 
         self.algorithm()
         time_elapsed = time.time() - self.start_time
         return self.array, time_elapsed
-
-
-
+    
+    @abstractmethod
+    def algorithm(self):
+        raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
 
 '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
 class BubbleSort(Algorithm):
