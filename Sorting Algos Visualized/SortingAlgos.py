@@ -177,12 +177,15 @@ class ShellSort(Algorithm):
             for i in range(gap, len(self.array)): #analyze the second half first
                 temp = self.array[i] #value storage for the element that is being analyzed
                 j = i
-
-                while j >= gap and self.array[j - gap] > temp: #compare the value with the corresponding element in the first half
-                    self.array[j] = self.array[j - gap] #if number in the first half is bigger than number in the second half, replace the second half value
-                    self.update_display(self.array[j], self.array[j - gap]) #if it ain't bigger, iterate throught the first half to search for a smaller value
+                #compare the value with the corresponding element in the first half
+                while j >= gap and self.array[j - gap] > temp:
+                    #if number in the first half is bigger than number in the second half, replace the second half value
+                    self.array[j] = self.array[j - gap]
+                    #if it ain't bigger, iterate throught the first half to search for a smaller value
+                    self.update_display(self.array[j], self.array[j - gap])
                     j = j-gap
-                self.array[j] = temp #place the smaller value in the first half (if first half value is larger, if not - do not replace anything)
+                #place the smaller value in the first half (if first half value is larger, if not - do not replace anything)
+                self.array[j] = temp
                 self.update_display(self.array[j], self.array[j - gap])
     # Reduce the gap for the next element
 
