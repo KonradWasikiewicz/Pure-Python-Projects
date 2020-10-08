@@ -16,7 +16,7 @@ screen = pygame.display.set_mode((900, 650))
 # title and icon settings 
 pygame.display.set_caption("Sorting algorithms visualized") 
 
-img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-Projects\Sorting Algos Visualized\ikona.png') 
+img = pygame.image.load (r'.\ikona.png') 
 pygame.display.set_icon(img) 
   
 # boolean variable to run the program in while loop 
