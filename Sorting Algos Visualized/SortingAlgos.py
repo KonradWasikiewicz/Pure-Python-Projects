@@ -15,9 +15,10 @@ import time
 import random
 from abc import ABCMeta, abstractmethod
 
-#miejsce na import i zmienne globalen
+
 
 class Algorithm(metaclass=ABCMeta):
+    '''universal algorithm class'''
     def __init__(self, name):
         self.array = random.sample(range(512), 512) # Random array of size 512
         self.name = name # Get name of the variable
@@ -36,8 +37,9 @@ class Algorithm(metaclass=ABCMeta):
     def algorithm(self):
         raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
 
-'''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
-class BubbleSort(Algorithm):
+
+class BubbleSort(Algorithm): 
+    '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
     def __init__(self):
         super().__init__("BubbleSort")
     def algorithm(self):
@@ -47,12 +49,12 @@ class BubbleSort(Algorithm):
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
 
-''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
 class MergeSort(Algorithm):
+    ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
     def __init__(self):
         super().__init__("MergeSort")
 
-    def algorithm(self, array = []):
+    def algorithm(self, array=[]):
         if array == []:
             array = self.array
         if len(self.array) > 1:
@@ -92,20 +94,20 @@ class MergeSort(Algorithm):
                 k += 1
             self.update_display()
 
-''' Quick sort - picks an elements as a pivot and sorts the given array around the pivot'''
 class QuickSort(Algorithm):
+    ''' Quick sort - picks an elements as a pivot and sorts the given array around the pivot'''
     def __init__(self):
         super().__init__("QuickSort")
 
-    def algorithm(self, array = [], start = 0, end = 0):
+    def algorithm(self, array=[], start=0, end=0):
         if array == []:
             array = self.array
             end = len(array) - 1
-        if start >=  end:
+        if start >= end:
             return
-        pivot = self.partition(array,start,end)
-        self.algorithm(array,start,pivot-1)
-        self.algorithm(array,pivot+1,end)
+        pivot = self.partition(array, start, end)
+        self.algorithm(array, start, pivot-1)
+        self.algorithm(array, pivot+1, end)
 
     def partition(self, array, start, end):
         pivot = array[start]
@@ -113,8 +115,9 @@ class QuickSort(Algorithm):
         high = end
 
         while True:
-            #if the current value we're looking at is larger than the pivot it's in the right place (right side of pivot) and we can move left,
-            #to the next element. We also need to make sure we haven't passed the low point, since that indicates we have already moved all the elements to their correct side of the pivot
+#if the current value we're looking at is larger than the pivot it's in the right place
+#and we can move left,to the next element. We also need to make sure we haven't passed the low point,
+#since that indicates we have already moved all the elements to their correct side of the pivot
             while low <= high and array[high] >= pivot:
                 high = high - 1
             #opposite process of the one above
@@ -132,11 +135,12 @@ class QuickSort(Algorithm):
         array[start], array[high] = array[high], array[start]
         self.update_display(array[start], array[high])
 
-        return high                                                                       # moze niepotrzebne?
+        return high #moze niepotrzebne?
 
-'''Selection sort - finding minimum value in an array and swapping it with nth element
-(beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
+
 class SelectionSort(Algorithm):
+    '''Selection sort - finding minimum value in an array and swapping it with nth element
+    (beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
     def __init__(self):
         super().__init__("SelectionSort")
 
@@ -149,10 +153,11 @@ class SelectionSort(Algorithm):
             self.array[i], self.array[min_id] = self.array[min_id], self.array[i]
             self.update_display(self.array[i], self.array[min_id])
 
-'''Insertion sort - comparing element n with n-1 and if n-1 bigger than n, swapping it.
-    If not iterating through the list to the very beginning to place it correctly'''
+
 
 class InsertionSort(Algorithm):
+    '''Insertion sort - comparing element n with n-1 and if n-1 bigger than n, swapping it.
+    If not iterating through the list to the very beginning to place it correctly'''
     def __init__(self):
         super().__init__("InsertionSort")
 
@@ -166,8 +171,9 @@ class InsertionSort(Algorithm):
             self.array[x+1] = nth_element
             self.update_display(self.array[x], self.array[i])
 
-'''Shell sort - take a second half of the array and compare every element with an element from the first half'''
+
 class ShellSort(Algorithm):
+    '''Shell sort - take a second half of the array and compare every element with an element from the first half'''
     def __init__(self):
         super().__init__("ShellSort")
 
@@ -202,7 +208,7 @@ class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def algorithm(self, array = []):
+    def algorithm(self, array=[]):
         if array == []:
             array = self.array
         last_pos_pointer = len(array)-1 # defines iteration boundary
