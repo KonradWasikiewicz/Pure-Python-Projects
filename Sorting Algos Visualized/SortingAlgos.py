@@ -16,7 +16,6 @@ import random
 from abc import ABCMeta, abstractmethod
 
 
-
 class Algorithm(metaclass=ABCMeta):
     '''universal algorithm class'''
     def __init__(self, name):
@@ -38,7 +37,8 @@ class Algorithm(metaclass=ABCMeta):
         raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
 
 
-class BubbleSort(Algorithm): 
+
+class BubbleSort(Algorithm):
     '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
     def __init__(self):
         super().__init__("BubbleSort")
