@@ -3,7 +3,6 @@ nie ma mozliwosci wyboru algorytmu
 '''
 
 import time
-import os
 import sys
 import pygame
 
