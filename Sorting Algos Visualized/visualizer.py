@@ -53,8 +53,8 @@ def main(args):
         print("Please select a sorting algorithm.")
     # Case: user requests list of algorithms
     elif args[1] == "list":
-            print("Available algorithms:\n\t" + "\n\t".join(SortingAlgos.keys()))
-            sys.exit(0)
+        print("Available algorithms:\n\t" + "\n\t".join(SortingAlgos.keys()))
+        sys.exit(0)
     # Case: user selected an algorithm
     else:
         try:
