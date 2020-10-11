@@ -7,14 +7,15 @@ Comparison based sorts:
 bubble, insertion, quick, selection, merge, heap, shell
 
 Non-comparison based sorts:
-
 radix, count, bucket
+
 
 """
 import time
 import random
 from abc import ABCMeta, abstractmethod
 
+import visualizer
 
 class Algorithm(metaclass=ABCMeta):
     '''universal algorithm class'''
@@ -23,10 +24,11 @@ class Algorithm(metaclass=ABCMeta):
         self.name = name # Get name of the variable
 
     def update_display(self, swap1=None, swap2=None):
-        import visualizer
-        visualizer.update(self, swap1, swap2) # pass the indexes to be swapped into the visualizer
+        '''pass the indexes to be swapped into the visualizer'''
+        visualizer.update(self, swap1, swap2)
 
-    def run(self): # Start the timer and run the algorithm
+    def run(self):
+        '''start the timer and run the algorithm'''
         self.start_time = time.time()
         self.algorithm()
         time_elapsed = time.time() - self.start_time
@@ -44,7 +46,8 @@ class BubbleSort(Algorithm):
         super().__init__("BubbleSort")
     def algorithm(self):
         for iteration in range(len(self.array)):
-            for i in range(len(self.array) -1 -iteration): #as we know that the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
+            #as the last element of each iteration is on its place, to optimize the algo we reduce range for i with each done iteration
+            for i in range(len(self.array) -1 -iteration):
                 if self.array[i] > self.array[i+1]:
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
@@ -54,8 +57,8 @@ class MergeSort(Algorithm):
     def __init__(self):
         super().__init__("MergeSort")
 
-    def algorithm(self, array=[]):
-        if array == []:
+    def algorithm(self, array=None):
+        if array is None:
             array = self.array
         if len(self.array) > 1:
             middle = len(self.array) // 2
@@ -99,8 +102,8 @@ class QuickSort(Algorithm):
     def __init__(self):
         super().__init__("QuickSort")
 
-    def algorithm(self, array=[], start=0, end=0):
-        if array == []:
+    def algorithm(self, array=None, start=0, end=0):
+        if array is None:
             array = self.array
             end = len(array) - 1
         if start >= end:
@@ -114,10 +117,10 @@ class QuickSort(Algorithm):
         low = start+1
         high = end
 
+        #if the current value we're looking at is larger than the pivot it's in the right place
+        #and we can move left,to the next element. We also need to make sure we haven't passed the low point,
+        #since that indicates we have already moved all the elements to their correct side of the pivot
         while True:
-#if the current value we're looking at is larger than the pivot it's in the right place
-#and we can move left,to the next element. We also need to make sure we haven't passed the low point,
-#since that indicates we have already moved all the elements to their correct side of the pivot
             while low <= high and array[high] >= pivot:
                 high = high - 1
             #opposite process of the one above
@@ -164,12 +167,12 @@ class InsertionSort(Algorithm):
     def algorithm(self):
         for i in range(len(self.array)):
             nth_element = self.array[i]
-            x = i-1
-            while x >= 0 and self.array[x] > nth_element:
-                self.array[x+1] = self.array[x]
-                x -= 1
-            self.array[x+1] = nth_element
-            self.update_display(self.array[x], self.array[i])
+            val = i-1
+            while val >= 0 and self.array[val] > nth_element:
+                self.array[val+1] = self.array[val]
+                val -= 1
+            self.array[val+1] = nth_element
+            self.update_display(self.array[val], self.array[i])
 
 
 class ShellSort(Algorithm):
@@ -198,9 +201,9 @@ class ShellSort(Algorithm):
             gap = gap//2
 
 
-'''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.   '''
+'''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the
+root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
 '''
-
 https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/visualizer.py
 https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
 https://gist.github.com/haikentcode/80a12e92ab2173490a088c97a80b1372
@@ -208,8 +211,8 @@ class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
 
-    def algorithm(self, array=[]):
-        if array == []:
+    def algorithm(self, array=None):
+        if array is None:
             array = self.array
         last_pos_pointer = len(array)-1 # defines iteration boundary
         arr_len = len(array)
@@ -239,9 +242,5 @@ class HeapSort(Algorithm):
         # if parent has been modified, implement it into the array
         if parent != i:
             self.array[i], self.array[parent] = self.array[parent], self.array[i]
-
             # recurisve function to move it further down the array
-            self.heap_it(array, arr_len, parent)
-
-            '''
-
+            self.heap_it(array, arr_len, parent)'''
