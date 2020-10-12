@@ -1,12 +1,13 @@
 '''heap sort sie krzaczy
 nie ma mozliwosci wyboru algorytmu
 '''
+import comparison_based_algos
 
 import time
 import sys
 import pygame
 
-import comparison_based_algos
+
 
  # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
 dimensions = (1024, 512)
