@@ -23,7 +23,7 @@ class Algorithm(metaclass=ABCMeta):
         self.name = name # Get name of the variable
 
     def update_display(self, swap1=None, swap2=None):
-        import visualizer #importing here prevents circular import
+        import visualizer #pylint: disable=import-outside-toplevel
         visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
     def run(self):
