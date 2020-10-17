@@ -1,5 +1,7 @@
 '''heap sort sie krzaczy
 nie ma mozliwosci wyboru algorytmu
+
+https://code.visualstudio.com/docs/getstarted/settings   workspace settings, tym rozwiazac te problemy pylinta
 '''
 import time
 import sys
