@@ -1,18 +1,17 @@
 '''heap sort sie krzaczy
 nie ma mozliwosci wyboru algorytmu
 '''
-import comparison_based_algos
-
 import time
 import sys
 import pygame
 
+import comparison_based_algos
 
 
  # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
 dimensions = (1024, 512)
 # List all the algorithms available in the project in dictionary and call the necessary functions from algorithms.py
-comparison_based_algos = {"SelectionSort": comparison_based_algos.SelectionSort(), "BubbleSort": comparison_based_algos.BubbleSort(), "InsertionSort": comparison_based_algos.InsertionSort(), "MergeSort": comparison_based_algos.MergeSort(), "QuickSort": comparison_based_algos.QuickSort()}
+algos = {"SelectionSort": comparison_based_algos.SelectionSort(), "BubbleSort": comparison_based_algos.BubbleSort(), "InsertionSort": comparison_based_algos.InsertionSort(), "MergeSort": comparison_based_algos.MergeSort(), "QuickSort": comparison_based_algos.QuickSort()}
 
 # Set the dimensions of the window and display it
 display = pygame.display.set_mode(dimensions)
@@ -53,12 +52,12 @@ def main(args):
         print("Please select a sorting algorithm.")
     # Case: user requests list of algorithms
     elif args[1] == "list":
-        print("Available algorithms:\n\t" + "\n\t".join(comparison_based_algos.keys()))
+        print("Available algorithms:\n\t" + "\n\t".join(algos.keys()))
         sys.exit(0)
     # Case: user selected an algorithm
     else:
         try:
-            algorithm = comparison_based_algos[args[1]] # Collect algorithm
+            algorithm =  algos[args[1]] # Collect algorithm
             _, time_elapsed = algorithm.run() # Run algorithm and time it
             keep_open(algorithm, display, time_elapsed) # Display results
         except:
