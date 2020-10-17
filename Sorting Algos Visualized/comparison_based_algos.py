@@ -15,7 +15,6 @@ import time
 import random
 from abc import ABCMeta, abstractmethod
 
-import visualizer
 
 class Algorithm(metaclass=ABCMeta):
     '''universal algorithm class'''
@@ -24,8 +23,8 @@ class Algorithm(metaclass=ABCMeta):
         self.name = name # Get name of the variable
 
     def update_display(self, swap1=None, swap2=None):
-        '''pass the indexes to be swapped into the visualizer'''
-        visualizer.update(self, swap1, swap2)
+        import visualizer #importing here prevents circular import
+        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
     def run(self):
         '''start the timer and run the algorithm'''
@@ -113,13 +112,15 @@ class QuickSort(Algorithm):
         self.algorithm(array, pivot+1, end)
 
     def partition(self, array, start, end):
+        ##if the current value we're looking at is larger than the pivot it's in the right place
+        #and we can move left,to the next element. We also need to make sure we haven't passed the low point,
+        #since that indicates we have already moved all the elements to their correct side of the pivot"""
+
         pivot = array[start]
         low = start+1
         high = end
 
-        #if the current value we're looking at is larger than the pivot it's in the right place
-        #and we can move left,to the next element. We also need to make sure we haven't passed the low point,
-        #since that indicates we have already moved all the elements to their correct side of the pivot
+
         while True:
             while low <= high and array[high] >= pivot:
                 high = high - 1
