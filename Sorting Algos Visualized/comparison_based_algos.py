@@ -23,7 +23,7 @@ class Algorithm(metaclass=ABCMeta):
         self.name = name # Get name of the variable
 
     def update_display(self, swap1=None, swap2=None):
-        import visualizer #pylint: disable=import-outside-toplevel
+        import visualizer
         visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
     def run(self):
@@ -203,7 +203,8 @@ class ShellSort(Algorithm):
 
 
 '''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the
-root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.
+root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
+'''
 https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/visualizer.py
 https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
 https://gist.github.com/haikentcode/80a12e92ab2173490a088c97a80b1372
