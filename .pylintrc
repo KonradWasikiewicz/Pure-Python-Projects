@@ -1,9 +1,10 @@
 [MASTER]
 
-# Specify a configuration file.
-#rcfile=
-
-
+disable=
+    C0116, #missing-function-docstring
+    import-outside-toplevel,  #disables visualizer circular reference
+    arguments-differ, #algorithm's arguments differ on purpose
+    pointless-string-statement
 
 [FORMAT]
 
