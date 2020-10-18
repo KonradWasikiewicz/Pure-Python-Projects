@@ -2,6 +2,7 @@
 nie ma mozliwosci wyboru algorytmu
 
 https://code.visualstudio.com/docs/getstarted/settings   workspace settings, tym rozwiazac te problemy pylinta
+https://www.youtube.com/watch?v=fFY5103p5-c&t=826s to samo, nawet mowa o pylintrc 15:12
 '''
 import time
 import sys
