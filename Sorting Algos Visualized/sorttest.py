@@ -67,11 +67,11 @@ def merge(array, x1, y1, x2, y2):
         arr_clr[i]= clr[0]
         arr_clr[j]= clr[0]
         if array[i]<array[j]:
-                temp.append(array[i])
-                i+= 1
+            temp.append(array[i])
+            i+= 1
         else:
-                temp.append(array[j])
-                j+= 1
+            temp.append(array[j])
+            j+= 1
     while i<= y1:
         arr_clr[i]= clr[1]
         refill()
