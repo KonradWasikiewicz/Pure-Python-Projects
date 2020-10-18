@@ -14,11 +14,13 @@ import comparison_based_algos
  # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
 dimensions = (1024, 512)
 # List all the algorithms available in the project in dictionary and call the necessary functions from algorithms.py
-algos = {"SelectionSort": comparison_based_algos.SelectionSort(),
+algos = {
         "BubbleSort": comparison_based_algos.BubbleSort(),
-        "InsertionSort": comparison_based_algos.InsertionSort(),
         "MergeSort": comparison_based_algos.MergeSort(),
-        "QuickSort": comparison_based_algos.QuickSort()}
+        "QuickSort": comparison_based_algos.QuickSort(),
+        "SelectionSort": comparison_based_algos.SelectionSort(),
+        "InsertionSort": comparison_based_algos.InsertionSort(),
+        "ShellSort": comparison_based_algos.ShellSort()}
 
 # Set the dimensions of the window and display it
 display = pygame.display.set_mode(dimensions)
