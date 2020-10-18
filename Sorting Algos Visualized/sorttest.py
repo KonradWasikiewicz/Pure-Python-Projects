@@ -7,11 +7,11 @@
 
 # main file, responsible for visualizing algos defined in other files
 
-import pygame
 import random
+import pygame
 
 # total window size
-screen = pygame.display.set_mode((900, 650))
+screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
 
 # title and icon settings
 pygame.display.set_caption("Sorting algorithms visualized")
@@ -20,16 +20,14 @@ img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-
 pygame.display.set_icon(img)
 
 # boolean variable to run the program in while loop
-run = True
+RUN = True
 
 # sorting window size
-width = 900
-length = 600
-array =[0]*151
-arr_clr =[(0, 204, 102)]*151
-clr_ind = 0
-clr =[(0, 204, 102), (255, 0, 0),
-(0, 0, 153), (255, 102, 0)]
+WIDTH = 900
+LENGTH = 600   #brak późniejszych odwołań, zamienić
+array = [0]*151
+arr_clr = [(0, 204, 102)]*151
+clr =[(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
 
 pygame.font.init()  # initializing text, so that it can be shown within the app
 fnt = pygame.font.SysFont("comicsans", 30)
@@ -48,13 +46,12 @@ def refill():
     pygame.time.delay(20)
 
 # Sorting Algo:Merge sort
-def mergesort(array, l, r):
-    mid =(l + r)//2
-    if l<r:
-        mergesort(array, l, mid)
-        mergesort(array, mid + 1, r)
-        merge(array, l, mid,
-            mid + 1, r)
+def mergesort(array, left, right):
+    mid =(left + right)//2
+    if left<right:
+        mergesort(array, left, mid)
+        mergesort(array, mid + 1, right)
+        merge(array, left, mid, mid + 1, right)
 def merge(array, x1, y1, x2, y2):
     i = x1
     j = x2
@@ -107,7 +104,7 @@ def draw():
     screen.blit(txt1, (20, 40))
     txt2 = fnt1.render("ALGORITHM USED: MERGE SORT", 1, (0, 0, 0))
     screen.blit(txt2, (600, 60))
-    element_width =(width-150)//150
+    element_width =(WIDTH-150)//150
     boundry_arr = 900 / 150
     boundry_grp = 550 / 100
     pygame.draw.line(screen, (0, 0, 0),
@@ -123,14 +120,14 @@ def draw():
         pygame.draw.line(screen, arr_clr[i],(boundry_arr * i-3, 100),(boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
 
 # Infinite loop to keep the window open
-while run:
+while RUN:
     # background
     screen.fill((255, 255, 255))
     # Event handler stores all event
     for event in pygame.event.get():
         # If we click Close button in window
         if event.type == pygame.QUIT:
-            run = False
+            RUN = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 generate_arr()
