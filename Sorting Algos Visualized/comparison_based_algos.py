@@ -10,9 +10,14 @@ Non-comparison based sorts:
 radix, count, bucket
 
 
+https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/visualizer.py
+https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
+https://gist.github.com/haikentcode/80a12e92ab2173490a088c97a80b1372
+
 """
 import time
 import random
+
 from abc import ABCMeta, abstractmethod
 
 
@@ -113,7 +118,7 @@ class QuickSort(Algorithm):
 
     def partition(self, array, start, end):
         ##if the current value we're looking at is larger than the pivot it's in the right place
-        #and we can move left,to the next element. We also need to make sure we haven't passed the low point,
+        #and we can move left, to the next element. We also need to make sure we haven't passed the low point,
         #since that indicates we have already moved all the elements to their correct side of the pivot"""
 
         pivot = array[start]
@@ -203,11 +208,9 @@ class ShellSort(Algorithm):
 
 
 '''Heap sort - based on heap data structure (maxheap). Exchanges the last element of the array with the
-root (first element) and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
-'''
-https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/visualizer.py
-https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
-https://gist.github.com/haikentcode/80a12e92ab2173490a088c97a80b1372
+root and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
+
+
 class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("HeapSort")
@@ -244,4 +247,4 @@ class HeapSort(Algorithm):
         if parent != i:
             self.array[i], self.array[parent] = self.array[parent], self.array[i]
             # recurisve function to move it further down the array
-            self.heap_it(array, arr_len, parent)'''
+            self.heap_it(array, arr_len, parent)
