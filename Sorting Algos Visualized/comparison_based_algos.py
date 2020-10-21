@@ -14,6 +14,11 @@ https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/
 https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
 https://gist.github.com/haikentcode/80a12e92ab2173490a088c97a80b1372
 
+opisac insertion, seleection
+dopisac cos do quick sort
+
+heap sort ma sie updateowac
+
 """
 import time
 import random
@@ -64,42 +69,29 @@ class MergeSort(Algorithm):
     def algorithm(self, array=None):
         if array is None:
             array = self.array
-        if len(self.array) > 1:
-            middle = len(self.array) // 2
-            left = self.array[:middle]
-            right = self.array[middle:]
-        #recurvise call on left and right, so that we end up with 1 element of right and left each (single pair)
-            self.algorithm(left)
-            self.algorithm(right)
-        #iterators used for traversing each of the two lists
-            i, j = 0, 0
-        #iterator used to keep track of the result list
-            k = 0
+        if len(array) < 2:
+            return array
+        mid = len(array) // 2
+        left = self.algorithm(array[:mid])
+        right = self.algorithm(array[mid:])
+        return self.merge(left, right)
 
-            while i < len(left) and j < len(right):
-                if left[i] < right[j]:
-                    #use the left value first
-                    self.array[k] = left[i]
-                    #move the iterator to the next number
-                    i += 1
-                else:
-                    #use the right value first
-                    self.array[k] = right[j]
-                    #move the iterator to the next number
-                    j += 1
-                #next number on the main list
-                k += 1
-            self.update_display()
-            #the other value from the pair
-            while i < len(left):
-                self.array[k] = left[i]
+    def merge(self, left, right):
+        result = []
+        i, j = 0, 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                result.append(left[i])
                 i += 1
-                k += 1
-            while j < len(right):
-                self.array[k] = right[j]
+            else:
+                result.append(right[j])
                 j += 1
-                k += 1
             self.update_display()
+        result += left[i:]
+        result += right[j:]
+        self.array = result
+        self.update_display()
+        return result
 
 class QuickSort(Algorithm):
     ''' Quick sort - picks an elements as a pivot and sorts the given array around the pivot'''
