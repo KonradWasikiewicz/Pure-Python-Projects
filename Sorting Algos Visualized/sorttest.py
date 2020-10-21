@@ -2,6 +2,7 @@
 * nie przerywa po nacisnieciu czerwonego buttona
 * załadowac inne algorytmy
 * relative path do lokalizacji ikony
+*cos sie wyjebywuje jak skonczy
 """
 
 
