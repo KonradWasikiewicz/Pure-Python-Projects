@@ -1,8 +1,7 @@
 '''heap sort sie krzaczy
 nie ma mozliwosci wyboru algorytmu
 
-https://code.visualstudio.com/docs/getstarted/settings   workspace settings, tym rozwiazac te problemy pylinta
-https://www.youtube.com/watch?v=fFY5103p5-c&t=826s to samo, nawet mowa o pylintrc 15:12
+jak kontrolowac czas wykonywania? w sensie jakichs opoznien
 '''
 import time
 import sys
@@ -10,22 +9,24 @@ import pygame
 
 import comparison_based_algos
 
-
- # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
-dimensions = (1024, 512)
-# List all the algorithms available in the project in dictionary and call the necessary functions from algorithms.py
+# List all the algorithms available in the project in dictionary and call the necessary functions
 algos = {
         "BubbleSort": comparison_based_algos.BubbleSort(),
-        "MergeSort": comparison_based_algos.MergeSort(),
+        "MergeSort": comparison_based_algos.MergeSort(),    #nie działa
         "QuickSort": comparison_based_algos.QuickSort(),
         "SelectionSort": comparison_based_algos.SelectionSort(),
         "InsertionSort": comparison_based_algos.InsertionSort(),
-        "ShellSort": comparison_based_algos.ShellSort()}
+        "ShellSort": comparison_based_algos.ShellSort(),
+        #"HeapSort": comparison_based_algos.HeapSort()
+        #"RadixSort": non_comparison_based_algos.RadixSort(),
+        #"CountSort": non_comparison_based_algos.CountSort(),
+        #"BucketSort": non_comparison_based_algos.BuckerSort()
+        }
 
+ # Set the window length and breadth  (Make sure that the breadth is equal to size of array. [512])
+dimensions = (1024, 512)
 # Set the dimensions of the window and display it
 display = pygame.display.set_mode(dimensions)
-# Fill the window with purple hue
-display.fill(pygame.Color("#a48be0"))
 
 def check_events(): # Check if the pygame window was quit                         '''ZDECYDOWANIE DO PRZEKLEJKI'''
     for event in pygame.event.get():
@@ -34,7 +35,7 @@ def check_events(): # Check if the pygame window was quit                       
             sys.exit()
 
 def update(algorithm, swap1=None, swap2=None, display=display): # The function responsible for drawing the sorted array on each iteration
-    display.fill(pygame.Color("#a48be0"))
+    display.fill(pygame.Color(220,220,220)) #sets the window background color to gray
     pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.3f}      Status: Sorting...".format(algorithm.name, time.time() - algorithm.start_time)) # Display on title bar
     k = int(dimensions[0]/len(algorithm.array))
     for i in range(len(algorithm.array)):
@@ -73,5 +74,5 @@ def main(args):
             print("Error.")
 
 if __name__ == "__main__":
-    sys.argv.append("BubbleSort")
+    sys.argv.append("ShellSort")
     main(sys.argv)
