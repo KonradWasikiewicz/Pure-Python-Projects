@@ -1,4 +1,11 @@
 '''heap sort sie krzaczy
+merge sort nie działa 
+non comparison sorts nie okreslone
+ 
+ czy alorightm mozna definiowac w vizulierrze/
+
+co to za abstract method w dfinicji  
+
 nie ma mozliwosci wyboru algorytmu
 
 jak kontrolowac czas wykonywania? w sensie jakichs opoznien
