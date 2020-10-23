@@ -18,7 +18,7 @@ import comparison_based_algos
 # List all the algorithms available in the project in dictionary and call the necessary functions
 algos = {
         "BubbleSort": comparison_based_algos.BubbleSort(),
-        "MergeSort": comparison_based_algos.MergeSort(),    #nie działa
+        "MergeSort": comparison_based_algos.MergeSort(),    #działa ale cos nie wyswietla
         "QuickSort": comparison_based_algos.QuickSort(),
         "SelectionSort": comparison_based_algos.SelectionSort(),
         "InsertionSort": comparison_based_algos.InsertionSort(),
