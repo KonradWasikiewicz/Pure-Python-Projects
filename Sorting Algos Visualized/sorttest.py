@@ -3,6 +3,11 @@
 * załadowac inne algorytmy
 * relative path do lokalizacji ikony
 *cos sie wyjebywuje jak skonczy
+
+list selection - do wyboru algorytmu
+dodać czas i napis "done!"
+zmiana układu graficxznego (linie do dołu, inne miejsce na napisy)
+algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 """
 
 
@@ -16,7 +21,7 @@ import os
 screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
 
 # title and icon settings
-pygame.display.set_caption("Sorting algorithms visualized")
+pygame.display.set_caption("Sorting Alogs Visualized")
 
 # setting up a relative path for the icon
 base_path = os.path.dirname(__file__)
@@ -36,8 +41,8 @@ arr_clr = [(0, 204, 102)]*151
 clr =[(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
 
 pygame.font.init()  # initializing text, so that it can be shown within the app
-fnt = pygame.font.SysFont("comicsans", 30)
-fnt1 = pygame.font.SysFont("comicsans", 20)
+fnt = pygame.font.SysFont("calibri", 20)
+fnt1 = pygame.font.SysFont("calibri", 15)
 
 # Generate new Array
 def generate_arr():
@@ -102,10 +107,10 @@ def merge(array, x1, y1, x2, y2):
 # Draw the array values
 def draw():
     # Text should be rendered
-    txt = fnt.render("PRESS ENTER TO PERFORM SORTING.", 1, (0, 0, 0))
+    txt = fnt.render("PRESS ENTER TO START SORTING.", 1, (0, 0, 0))
     # Position where text is placed
     screen.blit(txt, (20, 20))
-    txt1 = fnt.render("PRESS 'R' FOR NEW ARRAY.",
+    txt1 = fnt.render("PRESS 'W' FOR A NEW ARRAY.",
                     1, (0, 0, 0))
     screen.blit(txt1, (20, 40))
     txt2 = fnt1.render("ALGORITHM USED: MERGE SORT", 1, (0, 0, 0))
@@ -135,7 +140,7 @@ while RUN:
         if event.type == pygame.QUIT:
             RUN = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_r:
+            if event.key == pygame.K_w:
                 generate_arr()
             if event.key == pygame.K_RETURN:
                 mergesort(array, 1, len(array)-1)
