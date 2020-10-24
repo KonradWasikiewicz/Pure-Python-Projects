@@ -81,4 +81,4 @@ def main(args):
 
 if __name__ == "__main__":
     sys.argv.append("BubbleSort")
-    main(args)
+    main(sys.argv)
