@@ -10,6 +10,7 @@
 
 import random
 import pygame
+import os
 
 # total window size
 screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
@@ -17,7 +18,11 @@ screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmi
 # title and icon settings
 pygame.display.set_caption("Sorting algorithms visualized")
 
-img = pygame.image.load (r'C:\Users\konra\OneDrive\Dokumenty\GitHub\Pure-Python-Projects\Sorting Algos Visualized\icon.png')
+base_path = os.path.dirname(__file__)
+icon_path = os.path.join(base_path, "icon.png")
+img = pygame.image.load(icon_path)
+
+#img = pygame.image.load ('..\Sorting Algos Visualized\icon.png')
 pygame.display.set_icon(img)
 
 # boolean variable to run the program in while loop
@@ -44,7 +49,7 @@ def refill():
     screen.fill((255, 255, 255))
     draw()
     pygame.display.update()
-    pygame.time.delay(20)
+    pygame.time.delay(10)
 
 # Sorting Algo:Merge sort
 def mergesort(array, left, right):
