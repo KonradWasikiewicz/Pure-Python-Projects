@@ -18,11 +18,11 @@ screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmi
 # title and icon settings
 pygame.display.set_caption("Sorting algorithms visualized")
 
+# setting up a relative path for the icon
 base_path = os.path.dirname(__file__)
 icon_path = os.path.join(base_path, "icon.png")
 img = pygame.image.load(icon_path)
 
-#img = pygame.image.load ('..\Sorting Algos Visualized\icon.png')
 pygame.display.set_icon(img)
 
 # boolean variable to run the program in while loop
