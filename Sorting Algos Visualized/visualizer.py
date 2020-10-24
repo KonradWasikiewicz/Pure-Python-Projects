@@ -42,7 +42,7 @@ def check_events(): # Check if the pygame window was quit                       
 
 def update(algorithm, swap1=None, swap2=None, display=display): # The function responsible for drawing the sorted array on each iteration
     display.fill(pygame.Color(220,220,220)) #sets the window background color to gray
-    pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.3f}      Status: Sorting...".format(algorithm.name, time.time() - algorithm.start_time)) # Display on title bar
+    pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.2f}      Status: Sorting...".format(algorithm.name, time.time() - algorithm.start_time)) # Display on title bar
     k = int(dimensions[0]/len(algorithm.array))
     for i in range(len(algorithm.array)):
         colour = (80, 0, 255)
@@ -57,7 +57,7 @@ def update(algorithm, swap1=None, swap2=None, display=display): # The function r
     pygame.display.update()
 
 def keep_open(algorithm, display, time): # Keep the window open until sort completion
-    pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.3f}      Status: Done!".format(algorithm.name, time))
+    pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.2f}      Status: Done!".format(algorithm.name, time))
     while True:
         check_events()
 
@@ -69,7 +69,7 @@ def main(args):
     # Case: user requests list of algorithms
     elif args[1] == "list":
         print("Available algorithms:\n\t" + "\n\t".join(algos.keys()))
-        sys.exit(0)
+        sys.exit()
     # Case: user selected an algorithm
     else:
         try:
@@ -77,8 +77,8 @@ def main(args):
             _, time_elapsed = algorithm.run() # Run algorithm and time it
             keep_open(algorithm, display, time_elapsed) # Display results
         except:
-            print("Error.")
+            print("Error")
 
 if __name__ == "__main__":
-    sys.argv.append("MergeSort")
-    main(sys.argv)
+    sys.argv.append("BubbleSort")
+    main(args)
