@@ -69,8 +69,6 @@ class MergeSort(Algorithm):
     def algorithm(self, array=None):
         if array is None:
             array = self.array
-        if len(array) < 2:
-            return array
         mid = len(array) // 2
         left = self.algorithm(array[:mid])
         right = self.algorithm(array[mid:])
@@ -86,11 +84,11 @@ class MergeSort(Algorithm):
             else:
                 result.append(right[j])
                 j += 1
-            self.update_display()
+        self.update_display(self.array[i], self.array[i+1])
         result += left[i:]
         result += right[j:]
         self.array = result
-        self.update_display()
+        self.update_display(self.array[i], self.array[i+1])
         return result
 
 class QuickSort(Algorithm):
