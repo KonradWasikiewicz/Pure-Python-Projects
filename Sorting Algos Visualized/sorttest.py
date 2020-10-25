@@ -21,7 +21,7 @@ import os
 screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
 
 # title and icon settings
-pygame.display.set_caption("Sorting Alogs Visualized")
+pygame.display.set_caption("Sorting Alogs")
 
 # setting up a relative path for the icon
 base_path = os.path.dirname(__file__)
