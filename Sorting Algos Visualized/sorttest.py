@@ -16,6 +16,7 @@ algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 import random
 import pygame
 import os
+import sys
 
 # total window size
 screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
@@ -31,14 +32,14 @@ img = pygame.image.load(icon_path)
 pygame.display.set_icon(img)
 
 # boolean variable to run the program in while loop
-RUN = True
+RUNNING  = True
 
 # sorting window size
 WIDTH = 900
 LENGTH = 600   #brak późniejszych odwołań, zamienić
 array = [0]*151
 arr_clr = [(0, 204, 102)]*151
-clr =[(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
+clr = [(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
 
 pygame.font.init()  # initializing text, so that it can be shown within the app
 fnt = pygame.font.SysFont("calibri", 20)
@@ -56,6 +57,12 @@ def refill():
     pygame.display.update()
     pygame.time.delay(10)
 
+def check_events(): # Check if a window closing request was made               
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
 # Sorting Algo:Merge sort
 def mergesort(array, left, right):
     mid = (left + right)//2
@@ -70,7 +77,7 @@ def merge(array, x1, y1, x2, y2):
     pygame.event.pump()
     while i <= y1 and j <= y2:
         arr_clr[i] = clr[1]
-        arr_clr[j ]= clr[1]
+        arr_clr[j] = clr[1]
         refill()
         arr_clr[i] = clr[0]
         arr_clr[j] = clr[0]
@@ -95,14 +102,14 @@ def merge(array, x1, y1, x2, y2):
     j = 0
     for i in range(x1, y2 + 1):
         pygame.event.pump()
-        array[i]= temp[j]
-        j+= 1
-        arr_clr[i]= clr[2]
+        array[i] = temp[j]
+        j += 1
+        arr_clr[i] = clr[2]
         refill()
         if y2-x1 == len(array)-2:
-            arr_clr[i]= clr[3]
+            arr_clr[i] = clr[3]
         else:
-            arr_clr[i]= clr[0]
+            arr_clr[i] = clr[0]
 
 # Draw the array values
 def draw():
@@ -123,23 +130,21 @@ def draw():
 
     # Drawing the array values as lines
     for i in range(1, 151):
-        pygame.draw.line(screen, arr_clr[i],(boundry_arr * i-3, 100),(boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
+        pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
 
 # Infinite loop to keep the window open
-while RUN:
+while RUNNING:
     # background
     screen.fill((255, 255, 255))
     # Event handler stores all event
     for event in pygame.event.get():
-        # If we click Close button in window
-        if event.type == pygame.QUIT:
-            RUN = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 generate_arr()
             if event.key == pygame.K_RETURN:
-                mergesort(array, 1, len(array)-1)
-    draw()
-    pygame.display.update()
+                mergesort(array, 1, len(array)-1)            #KLUCZOWE DLA DEFINICJI ALGOS 
+        check_events()
+        draw()
+        pygame.display.update()
 
 pygame.quit()
