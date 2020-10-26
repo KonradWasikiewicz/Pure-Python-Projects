@@ -32,9 +32,6 @@ img = pygame.image.load(icon_path)
 
 pygame.display.set_icon(img)
 
-# boolean variable to run the program in while loop
-RUNNING  = True
-
 # sorting window size
 WIDTH = 900
 LENGTH = 600   #brak późniejszych odwołań, zamienić
@@ -132,6 +129,9 @@ def draw():
     # Drawing the array values as lines
     for i in range(1, 151):
         pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
+
+# boolean variable to run the program in while loop
+RUNNING  = True
 
 # Infinite loop to keep the window open
 while RUNNING:
