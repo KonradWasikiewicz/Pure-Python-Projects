@@ -47,8 +47,8 @@ fnt1 = pygame.font.SysFont("calibri", 15)
 # Generate new Array
 def generate_arr():
     for i in range(1, 151):
-        arr_clr[i]= clr[0]
-        array[i]= random.randrange(1, 100)
+        arr_clr[i] = clr[0]
+        array[i] = random.randrange(1, 100)
 generate_arr()
 def refill():
     screen.fill((255, 255, 255))
@@ -58,40 +58,40 @@ def refill():
 
 # Sorting Algo:Merge sort
 def mergesort(array, left, right):
-    mid =(left + right)//2
-    if left<right:
+    mid = (left + right)//2
+    if left < right:
         mergesort(array, left, mid)
         mergesort(array, mid + 1, right)
         merge(array, left, mid, mid + 1, right)
 def merge(array, x1, y1, x2, y2):
     i = x1
     j = x2
-    temp =[]
+    temp = []
     pygame.event.pump()
-    while i<= y1 and j<= y2:
-        arr_clr[i]= clr[1]
-        arr_clr[j]= clr[1]
+    while i <= y1 and j <= y2:
+        arr_clr[i] = clr[1]
+        arr_clr[j ]= clr[1]
         refill()
-        arr_clr[i]= clr[0]
-        arr_clr[j]= clr[0]
-        if array[i]<array[j]:
+        arr_clr[i] = clr[0]
+        arr_clr[j] = clr[0]
+        if array[i] < array[j]:
             temp.append(array[i])
-            i+= 1
+            i += 1
         else:
             temp.append(array[j])
-            j+= 1
-    while i<= y1:
-        arr_clr[i]= clr[1]
+            j += 1
+    while i <= y1:
+        arr_clr[i] = clr[1]
         refill()
-        arr_clr[i]= clr[0]
+        arr_clr[i] = clr[0]
         temp.append(array[i])
-        i+= 1
-    while j<= y2:
-        arr_clr[j]= clr[1]
+        i += 1
+    while j <= y2:
+        arr_clr[j] = clr[1]
         refill()
-        arr_clr[j]= clr[0]
+        arr_clr[j] = clr[0]
         temp.append(array[j])
-        j+= 1
+        j += 1
     j = 0
     for i in range(x1, y2 + 1):
         pygame.event.pump()
@@ -110,21 +110,16 @@ def draw():
     txt = fnt.render("PRESS ENTER TO START SORTING.", 1, (0, 0, 0))
     # Position where text is placed
     screen.blit(txt, (20, 20))
-    txt1 = fnt.render("PRESS 'W' FOR A NEW ARRAY.",
-                    1, (0, 0, 0))
+    txt1 = fnt.render("PRESS 'W' FOR A NEW ARRAY.", 1, (0, 0, 0))
     screen.blit(txt1, (20, 40))
     txt2 = fnt1.render("ALGORITHM USED: MERGE SORT", 1, (0, 0, 0))
     screen.blit(txt2, (600, 60))
-    element_width =(WIDTH-150)//150
+    element_width = (WIDTH-150)//150
     boundry_arr = 900 / 150
     boundry_grp = 550 / 100
-    pygame.draw.line(screen, (0, 0, 0),
-                    (0, 95), (900, 95), 6)
+    pygame.draw.line(screen, (0, 0, 0), (0, 95), (900, 95), 6)
     for i in range(1, 100):
-        pygame.draw.line(screen,
-                        (224, 224, 224),
-                        (0, boundry_grp * i + 100),
-                        (900, boundry_grp * i + 100), 1)
+        pygame.draw.line(screen, (224, 224, 224), (0, boundry_grp * i + 100), (900, boundry_grp * i + 100), 1)
 
     # Drawing the array values as lines
     for i in range(1, 151):
