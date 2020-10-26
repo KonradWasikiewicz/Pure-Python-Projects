@@ -41,18 +41,18 @@ def check_events(): # Check if the pygame window was quit                       
             sys.exit()
 
 def update(algorithm, swap1=None, swap2=None, display=DISPLAY): # The function responsible for drawing the sorted array on each iteration
-    display.fill(pygame.Color(220,220,220)) #sets the window background color to gray
+    display.fill(pygame.Color(220, 220, 220)) #sets the window background color to gray
     pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.2f}      Status: Sorting...".format(algorithm.name, time.time() - algorithm.start_time)) # Display on title bar
     k = int(DIMENSIONS[0]/len(algorithm.array))
     for i in range(len(algorithm.array)):
-        colour = (80, 0, 255)
+        color = (80, 0, 255)
         if swap1 == algorithm.array[i]:
-            colour = (0,255,0)
+            color = (0, 255, 0)
         elif swap2 == algorithm.array[i]:
-            colour = (255,0,0)
+            color = (255, 0, 0)
         # The most important step that renders the rectangles to the screen that gets sorted.
         # pygame.draw.rect(dsiplay_window, color_of_rectangle, size_of_rectangle)
-        pygame.draw.rect(display, colour, (i*k, DIMENSIONS[1], k, -algorithm.array[i]))
+        pygame.draw.rect(display, color, (i*k, DIMENSIONS[1], k, -algorithm.array[i]))
     check_events()
     pygame.display.update()
 
@@ -80,5 +80,5 @@ def main(args):
             print("Error")
 
 if __name__ == "__main__":
-    sys.argv.append("BubbleSort")
+    sys.argv.append("QuickSort")
     main(sys.argv)
