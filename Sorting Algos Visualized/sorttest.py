@@ -15,6 +15,7 @@ algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 
 import random
 import pygame
+
 import os
 import sys
 
@@ -142,8 +143,7 @@ while RUNNING:
             if event.key == pygame.K_w:
                 generate_arr()
             if event.key == pygame.K_RETURN:
-                mergesort(array, 1, len(array)-1)            #KLUCZOWE DLA DEFINICJI ALGOS 
-        check_events()
+                mergesort(array, 1, len(array)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
         draw()
         pygame.display.update()
 
