@@ -1,7 +1,8 @@
 """problemy:
+
+
 * nie przerywa po nacisnieciu czerwonego buttona
 * załadowac inne algorytmy
-* relative path do lokalizacji ikony
 *cos sie wyjebywuje jak skonczy
 
 list selection - do wyboru algorytmu
@@ -19,8 +20,9 @@ import pygame
 import os
 import sys
 
-# total window size
-screen = pygame.display.set_mode((900, 650)) #jak to sie ma do późniejszyc zmiennych width i length
+# main window size and fill 
+screen = pygame.display.set_mode((1110, 650)) #jak to sie ma do późniejszyc zmiennych width i length
+screen.fill((255, 255, 255))
 
 # title and icon settings
 pygame.display.set_caption("Sorting Alogs")
@@ -35,27 +37,30 @@ pygame.display.set_icon(img)
 # sorting window size
 WIDTH = 900
 LENGTH = 600   #brak późniejszych odwołań, zamienić
-array = [0]*151
-arr_clr = [(0, 204, 102)]*151
-clr = [(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)]
+records = 186 # defining number of records to be sorted
+array = [0]*records
+arr_clr = [(0, 204, 102)]*records
+clr = [(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)] # recor
 
 pygame.font.init()  # initializing text, so that it can be shown within the app
 fnt = pygame.font.SysFont("calibri", 20)
 fnt1 = pygame.font.SysFont("calibri", 15)
 
-# Generate new Array
+# generating array
 def generate_arr():
-    for i in range(1, 151):
+    for i in range(1, records):
         arr_clr[i] = clr[0]
-        array[i] = random.randrange(1, 100)
+        array[i] = random.randrange(1, 100) # randomly generates hight of each record 
+
 generate_arr()
+
 def refill():
     screen.fill((255, 255, 255))
     draw()
     pygame.display.update()
-    pygame.time.delay(10)
+    pygame.time.delay(7)
 
-def check_events(): # Check if a window closing request was made               
+def check_events(): # Check if a window closing request was made                ### do zdefinionwania analogicznego jak w visualizerze, na poziomie algo   
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -127,18 +132,17 @@ def draw():
         pygame.draw.line(screen, (224, 224, 224), (0, boundry_grp * i + 100), (900, boundry_grp * i + 100), 1)
 
     # Drawing the array values as lines
-    for i in range(1, 151):
+    for i in range(1, records):
         pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
 
 # boolean variable to run the program in while loop
 RUNNING  = True
 
-# Infinite loop to keep the window open
+# main loop 
 while RUNNING:
-    # background
-    screen.fill((255, 255, 255))
-    # Event handler stores all event
     for event in pygame.event.get():
+        if event.type == pygame.QUIT:   # setting up a possibility to quit while not running 
+            RUNNING = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 generate_arr()
