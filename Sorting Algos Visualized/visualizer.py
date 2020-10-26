@@ -56,7 +56,7 @@ def update(algorithm, swap1=None, swap2=None, display=DISPLAY): # The function r
     check_events()
     pygame.display.update()
 
-def keep_open(algorithm, display, time): # Keep the window open until sort completion
+def keep_open(algorithm, time): # Keep the window open until sort completion
     pygame.display.set_caption("Sorting Visualizer     Algorithm: {}     Time: {:.2f}      Status: Done!".format(algorithm.name, time))
     while True:
         check_events()
@@ -75,7 +75,7 @@ def main(args):
         try:
             algorithm = ALGOS[args[1]] # Collect algorithm
             _, time_elapsed = algorithm.run() # Run algorithm and time it
-            keep_open(algorithm, display, time_elapsed) # Display results
+            keep_open(algorithm, time_elapsed) # Display results
         except:
             print("Error")
 
