@@ -1,5 +1,6 @@
 """problemy:
-
+ogarnij rysowanie recordow
+ogarnij dodaj timer
 
 * nie przerywa po nacisnieciu czerwonego buttona
 * załadowac inne algorytmy
@@ -14,14 +15,14 @@ algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 
 # main file, responsible for visualizing algos defined in other files
 
-import random
-import pygame
-
 import os
 import sys
 
-# main window size and fill 
-screen = pygame.display.set_mode((1110, 650)) #jak to sie ma do późniejszyc zmiennych width i length
+import random
+import pygame
+
+# main window size and fill
+screen = pygame.display.set_mode((1110, 650))
 screen.fill((255, 255, 255))
 
 # title and icon settings
@@ -36,21 +37,20 @@ pygame.display.set_icon(img)
 
 # sorting window size
 WIDTH = 900
-LENGTH = 600   #brak późniejszych odwołań, zamienić
-records = 186 # defining number of records to be sorted
-array = [0]*records
+LENGTH = 600                                # brak późniejszych odwołań, zamienić
+records = 186                               # defining number of records to be sorted
+array = [0]*records                         # pre-defining the array as a list of x records with height of 0
 arr_clr = [(0, 204, 102)]*records
-clr = [(0, 204, 102), (255, 0, 0), (0, 0, 153), (255, 102, 0)] # recor
+clr = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
 
-pygame.font.init()  # initializing text, so that it can be shown within the app
-fnt = pygame.font.SysFont("calibri", 20)
-fnt1 = pygame.font.SysFont("calibri", 15)
+pygame.font.init()                          # initializing text, so that it can be shown within the app
+fnt = pygame.font.SysFont("calibri", 25)
 
 # generating array
 def generate_arr():
     for i in range(1, records):
-        arr_clr[i] = clr[0]
-        array[i] = random.randrange(1, 100) # randomly generates hight of each record 
+        arr_clr[i] = clr[0]                 # defining array color within pre-defined palette
+        array[i] = random.randrange(1, 100) # randomly generating height of each record
 
 generate_arr()
 
@@ -58,9 +58,9 @@ def refill():
     screen.fill((255, 255, 255))
     draw()
     pygame.display.update()
-    pygame.time.delay(7)
+    pygame.time.delay(8)                    # setting number of milliseconds in which each operation is being done
 
-def check_events(): # Check if a window closing request was made                ### do zdefinionwania analogicznego jak w visualizerze, na poziomie algo   
+def check_events():                         # checking if window closing request was made
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -114,34 +114,36 @@ def merge(array, x1, y1, x2, y2):
         else:
             arr_clr[i] = clr[0]
 
-# Draw the array values
+
 def draw():
-    # Text should be rendered
-    txt = fnt.render("PRESS ENTER TO START SORTING.", 1, (0, 0, 0))
-    # Position where text is placed
-    screen.blit(txt, (20, 20))
-    txt1 = fnt.render("PRESS 'W' FOR A NEW ARRAY.", 1, (0, 0, 0))
-    screen.blit(txt1, (20, 40))
-    txt2 = fnt1.render("ALGORITHM USED: MERGE SORT", 1, (0, 0, 0))
-    screen.blit(txt2, (600, 60))
+    txt1 = fnt.render("Press ENTER to start sorting.", 1, (0, 0, 0))    # renders the text
+    screen.blit(txt1, (800, 20))                                        # sets its position
+
+    txt2 = fnt.render("Press 'W' for a new array.", 1, (0, 0, 0))
+    screen.blit(txt2, (800, 50))
+
+    txt3 = fnt.render("Algorithm used: Merge Sort", 1, (0, 0, 0))
+    screen.blit(txt3, (20, 20))
+
+    txt4 = fnt.render("Time passed: ", 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
+    screen.blit(txt4, (20, 50))
+
     element_width = (WIDTH-150)//150
     boundry_arr = 900 / 150
     boundry_grp = 550 / 100
-    pygame.draw.line(screen, (0, 0, 0), (0, 95), (900, 95), 6)
-    for i in range(1, 100):
-        pygame.draw.line(screen, (224, 224, 224), (0, boundry_grp * i + 100), (900, boundry_grp * i + 100), 1)
 
-    # Drawing the array values as lines
+    # drawing the array values as lines
     for i in range(1, records):
         pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
+        # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
 RUNNING  = True
 
-# main loop 
+# main loop
 while RUNNING:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:   # setting up a possibility to quit while not running 
+        if event.type == pygame.QUIT:   # setting up a possibility to quit while not running
             RUNNING = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
