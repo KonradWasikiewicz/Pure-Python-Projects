@@ -22,7 +22,10 @@ import random
 import pygame
 
 # main window size and fill
-screen = pygame.display.set_mode((1110, 650))
+WIDTH = 1100
+HEIGHT = 650
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 screen.fill((255, 255, 255))
 
 # title and icon settings
@@ -36,11 +39,9 @@ img = pygame.image.load(icon_path)
 pygame.display.set_icon(img)
 
 # sorting window size
-WIDTH = 900
-LENGTH = 600                                # brak późniejszych odwołań, zamienić
-records = 186                               # defining number of records to be sorted
-array = [0]*records                         # pre-defining the array as a list of x records with height of 0
-arr_clr = [(0, 204, 102)]*records
+RECORDS = 184                               # defining number of RECORDS to be sorted
+array = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
+arr_clr = [(0, 204, 102)]*RECORDS
 clr = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
 
 pygame.font.init()                          # initializing text, so that it can be shown within the app
@@ -48,7 +49,7 @@ fnt = pygame.font.SysFont("calibri", 25)
 
 # generating array
 def generate_arr():
-    for i in range(1, records):
+    for i in range(1, RECORDS):
         arr_clr[i] = clr[0]                 # defining array color within pre-defined palette
         array[i] = random.randrange(1, 100) # randomly generating height of each record
 
@@ -128,13 +129,13 @@ def draw():
     txt4 = fnt.render("Time passed: ", 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
     screen.blit(txt4, (20, 50))
 
-    element_width = (WIDTH-150)//150
+    record_width = (WIDTH)//RECORDS
     boundry_arr = 900 / 150
     boundry_grp = 550 / 100
 
     # drawing the array values as lines
-    for i in range(1, records):
-        pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), element_width)
+    for i in range(1, RECORDS):
+        pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), record_width)
         # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
