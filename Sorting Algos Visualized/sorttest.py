@@ -118,20 +118,20 @@ def merge(array, x1, y1, x2, y2):
 
 def draw():
     txt1 = fnt.render("Press ENTER to start sorting.", 1, (0, 0, 0))    # rendering the text
-    screen.blit(txt1, (800, 20))                                        # setting its position
+    screen.blit(txt1, (680, 50))                                        # setting its position
 
     txt2 = fnt.render("Press 'W' for a new array.", 1, (0, 0, 0))
-    screen.blit(txt2, (800, 50))
+    screen.blit(txt2, (680, 80))
 
     txt3 = fnt.render("Algorithm used: Merge Sort", 1, (0, 0, 0))
-    screen.blit(txt3, (20, 20))
+    screen.blit(txt3, (680, 200))
 
     txt4 = fnt.render("Time passed: ", 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
-    screen.blit(txt4, (20, 50))
+    screen.blit(txt4, (680, 250))
 
     record_width = 6                                                   # width of a single record
     space_btwn_rec = 7                                                 # space between records
-    height_rec = 6.5                                                 # height of a single record
+    height_rec = 6.5                                                   # height of a single record
 
     # drawing the array values as lines
     for i in range(1, RECORDS):
