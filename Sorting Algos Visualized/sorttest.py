@@ -22,7 +22,7 @@ import random
 import pygame
 
 # main window size and fill
-WIDTH = 1100
+WIDTH = 1200
 HEIGHT = 650
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -39,7 +39,7 @@ img = pygame.image.load(icon_path)
 pygame.display.set_icon(img)
 
 # sorting window size
-RECORDS = 184                               # defining number of RECORDS to be sorted
+RECORDS = 172                               # defining number of RECORDS to be sorted
 array = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
 arr_clr = [(0, 204, 102)]*RECORDS
 clr = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
@@ -117,8 +117,8 @@ def merge(array, x1, y1, x2, y2):
 
 
 def draw():
-    txt1 = fnt.render("Press ENTER to start sorting.", 1, (0, 0, 0))    # renders the text
-    screen.blit(txt1, (800, 20))                                        # sets its position
+    txt1 = fnt.render("Press ENTER to start sorting.", 1, (0, 0, 0))    # rendering the text
+    screen.blit(txt1, (800, 20))                                        # setting its position
 
     txt2 = fnt.render("Press 'W' for a new array.", 1, (0, 0, 0))
     screen.blit(txt2, (800, 50))
@@ -129,14 +129,14 @@ def draw():
     txt4 = fnt.render("Time passed: ", 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
     screen.blit(txt4, (20, 50))
 
-    record_width = (WIDTH)//RECORDS
-    boundry_arr = 900 / 150
-    boundry_grp = 550 / 100
+    record_width = 6                                                   # width of a single record
+    space_btwn_rec = 7                                                 # space between records
+    height_rec = 5.5                                                   # height of a single record
 
     # drawing the array values as lines
     for i in range(1, RECORDS):
-        pygame.draw.line(screen, arr_clr[i], (boundry_arr * i-3, 100), (boundry_arr * i-3, array[i]*boundry_grp + 100), record_width)
-        # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
+        pygame.draw.line(screen, arr_clr[i], (space_btwn_rec * i-3, array[i]*height_rec + 100) , (space_btwn_rec * i-3, 50), record_width)
+      # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
 RUNNING  = True
