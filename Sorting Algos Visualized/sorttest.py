@@ -1,5 +1,5 @@
 """problemy:
-ogarnij rysowanie recordow
+
 ogarnij dodaj timer
 
 * nie przerywa po nacisnieciu czerwonego buttona
@@ -17,6 +17,7 @@ algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 
 import os
 import sys
+import time
 
 import random
 import pygame
@@ -126,7 +127,7 @@ def draw():
     txt3 = fnt.render("Algorithm used: Merge Sort", 1, (0, 0, 0))
     screen.blit(txt3, (680, 200))
 
-    txt4 = fnt.render("Time passed: ", 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
+    txt4 = fnt.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
     screen.blit(txt4, (680, 250))
 
     record_width = 6                                                   # width of a single record
