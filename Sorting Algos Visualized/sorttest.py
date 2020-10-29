@@ -22,8 +22,8 @@ import random
 import pygame
 
 # main window size and fill
-WIDTH = 1200
-HEIGHT = 650
+WIDTH = 1000
+HEIGHT = 620
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 screen.fill((255, 255, 255))
@@ -39,7 +39,7 @@ img = pygame.image.load(icon_path)
 pygame.display.set_icon(img)
 
 # sorting window size
-RECORDS = 172                               # defining number of RECORDS to be sorted
+RECORDS = 89                             # defining number of RECORDS to be sorted
 array = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
 arr_clr = [(0, 204, 102)]*RECORDS
 clr = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
@@ -131,11 +131,11 @@ def draw():
 
     record_width = 6                                                   # width of a single record
     space_btwn_rec = 7                                                 # space between records
-    height_rec = 5.5                                                   # height of a single record
+    height_rec = 6.5                                                 # height of a single record
 
     # drawing the array values as lines
     for i in range(1, RECORDS):
-        pygame.draw.line(screen, arr_clr[i], (space_btwn_rec * i-3, array[i]*height_rec + 100) , (space_btwn_rec * i-3, 50), record_width)
+        pygame.draw.line(screen, arr_clr[i], (array[i]*height_rec, space_btwn_rec * i-3), (0, space_btwn_rec * i-3), record_width)
       # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
