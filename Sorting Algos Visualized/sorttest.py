@@ -39,11 +39,11 @@ img = pygame.image.load(icon_path)
 
 pygame.display.set_icon(img)
 
-# sorting window size
-RECORDS = 89                             # defining number of RECORDS to be sorted
-array = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
-arr_clr = [(0, 204, 102)]*RECORDS
-clr = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
+
+RECORDS = 89                                # defining number of RECORDS to be sorted
+ARRAY = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
+ARR_COLOR = [(0, 0, 0)]*RECORDS
+COLOR = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
 
 pygame.font.init()                          # initializing text, so that it can be shown within the app
 fnt = pygame.font.SysFont("calibri", 25)
@@ -51,8 +51,8 @@ fnt = pygame.font.SysFont("calibri", 25)
 # generating array
 def generate_arr():
     for i in range(1, RECORDS):
-        arr_clr[i] = clr[0]                 # defining array color within pre-defined palette
-        array[i] = random.randrange(1, 100) # randomly generating height of each record
+        ARR_COLOR[i] = COLOR[0]                 # defining array color within pre-defined palette
+        ARRAY[i] = random.randrange(1, 100) # randomly generating height of each record
 
 generate_arr()
 
@@ -69,52 +69,52 @@ def check_events():                         # checking if window closing request
             sys.exit()
 
 # Sorting Algo:Merge sort
-def mergesort(array, left, right):
+def mergesort(ARRAY, left, right):
     mid = (left + right)//2
     if left < right:
-        mergesort(array, left, mid)
-        mergesort(array, mid + 1, right)
-        merge(array, left, mid, mid + 1, right)
-def merge(array, x1, y1, x2, y2):
+        mergesort(ARRAY, left, mid)
+        mergesort(ARRAY, mid + 1, right)
+        merge(ARRAY, left, mid, mid + 1, right)
+def merge(ARRAY, x1, y1, x2, y2):
     i = x1
     j = x2
     temp = []
     pygame.event.pump()
     while i <= y1 and j <= y2:
-        arr_clr[i] = clr[1]
-        arr_clr[j] = clr[1]
+        ARR_COLOR[i] = COLOR[1]
+        ARR_COLOR[j] = COLOR[1]
         refill()
-        arr_clr[i] = clr[0]
-        arr_clr[j] = clr[0]
-        if array[i] < array[j]:
-            temp.append(array[i])
+        ARR_COLOR[i] = COLOR[0]
+        ARR_COLOR[j] = COLOR[0]
+        if ARRAY[i] < ARRAY[j]:
+            temp.append(ARRAY[i])
             i += 1
         else:
-            temp.append(array[j])
+            temp.append(ARRAY[j])
             j += 1
     while i <= y1:
-        arr_clr[i] = clr[1]
+        ARR_COLOR[i] = COLOR[1]
         refill()
-        arr_clr[i] = clr[0]
-        temp.append(array[i])
+        ARR_COLOR[i] = COLOR[0]
+        temp.append(ARRAY[i])
         i += 1
     while j <= y2:
-        arr_clr[j] = clr[1]
+        ARR_COLOR[j] = COLOR[1]
         refill()
-        arr_clr[j] = clr[0]
-        temp.append(array[j])
+        ARR_COLOR[j] = COLOR[0]
+        temp.append(ARRAY[j])
         j += 1
     j = 0
     for i in range(x1, y2 + 1):
         pygame.event.pump()
-        array[i] = temp[j]
+        ARRAY[i] = temp[j]
         j += 1
-        arr_clr[i] = clr[2]
+        ARR_COLOR[i] = COLOR[2]
         refill()
-        if y2-x1 == len(array)-2:
-            arr_clr[i] = clr[3]
+        if y2-x1 == len(ARRAY)-2:
+            ARR_COLOR[i] = COLOR[3]
         else:
-            arr_clr[i] = clr[0]
+            ARR_COLOR[i] = COLOR[0]
 
 
 def draw():
@@ -127,8 +127,8 @@ def draw():
     txt3 = fnt.render("Algorithm used: Merge Sort", 1, (0, 0, 0))
     screen.blit(txt3, (680, 200))
 
-    txt4 = fnt.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
-    screen.blit(txt4, (680, 250))
+#    txt4 = fnt.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
+#    screen.blit(txt4, (680, 250))
 
     record_width = 6                                                   # width of a single record
     space_btwn_rec = 7                                                 # space between records
@@ -136,7 +136,7 @@ def draw():
 
     # drawing the array values as lines
     for i in range(1, RECORDS):
-        pygame.draw.line(screen, arr_clr[i], (array[i]*height_rec, space_btwn_rec * i-3), (0, space_btwn_rec * i-3), record_width)
+        pygame.draw.line(screen, ARR_COLOR[i], (0, space_btwn_rec * i-3), (ARRAY[i]*height_rec, space_btwn_rec * i-3), record_width)
       # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
@@ -151,7 +151,7 @@ while RUNNING:
             if event.key == pygame.K_w:
                 generate_arr()
             if event.key == pygame.K_RETURN:
-                mergesort(array, 1, len(array)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
+                mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
         draw()
         pygame.display.update()
 
