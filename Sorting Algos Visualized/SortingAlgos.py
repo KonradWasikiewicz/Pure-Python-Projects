@@ -22,6 +22,20 @@ import time
 import random
 import pygame
 
+# List all the algorithms available in the project in dictionary and call the necessary functions
+ALGOS = {
+        "BubbleSort": comparison_based_algos.BubbleSort(),
+        "MergeSort": comparison_based_algos.MergeSort(),    #działa ale cos nie wyswietla
+        "QuickSort": comparison_based_algos.QuickSort(),
+        "SelectionSort": comparison_based_algos.SelectionSort(),
+        "InsertionSort": comparison_based_algos.InsertionSort(),
+        "ShellSort": comparison_based_algos.ShellSort(),
+        #"HeapSort": comparison_based_algos.HeapSort()
+        #"RadixSort": non_comparison_based_algos.RadixSort(),
+        #"CountSort": non_comparison_based_algos.CountSort(),
+        #"BucketSort": non_comparison_based_algos.BuckerSort()
+        }
+
 # main window size and fill
 WIDTH = 1000
 HEIGHT = 620
@@ -48,6 +62,8 @@ COLOR = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palett
 pygame.font.init()                          # initializing text, so that it can be shown within the app
 fnt = pygame.font.SysFont("calibri", 25)
 
+
+
 # generating array
 def generate_arr():
     for i in range(1, RECORDS):
@@ -67,6 +83,33 @@ def check_events():                         # checking if window closing request
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+from abc import ABCMeta, abstractmethod
+
+
+class Algorithm(metaclass=ABCMeta):
+    '''universal algorithm class'''
+    def __init__(self, name):
+        self.array = random.sample(range(512), 512) # Random array of size 512
+        self.name = name # Get name of the variable
+
+    def update_display(self, swap1=None, swap2=None):
+        import visualizer
+        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
+
+    def run(self):
+        '''start the timer and run the algorithm'''
+        self.start_time = time.time()
+        self.algorithm()
+        time_elapsed = time.time() - self.start_time
+        return self.array, time_elapsed
+
+    @abstractmethod
+    def algorithm(self):
+        raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
+
+
+
 
 # Sorting Algo:Merge sort
 def mergesort(ARRAY, left, right):
