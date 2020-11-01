@@ -1,14 +1,19 @@
+''' button ok, umiejscowienie return, tak zeby sie komunikowaly
+
+caption
+
+https://stackoverflow.com/questions/45441885/how-can-i-create-a-dropdown-menu-from-a-list-in-tkinter
+
+przemyslec czy to koniecznie musi byc w funkcji
+
+chyba trzeba to w while loop, zeby click me nie zaciagalo jako odpowidz
+'''
+
 import os
 import tkinter as tk
 
-
-# setting up a relative path for the icon
-BASE_PATH = os.path.dirname(__file__)
-ICON_PATH = os.path.join(BASE_PATH, "icon.png")
-
-
-def choose_algo():
-    ALGOS = ["Bubble Sort",
+def choose():
+    algos = ["Bubble Sort",
             "Merge Sort",
             "Quick Sort",
             "Selection Sort",
@@ -19,11 +24,30 @@ def choose_algo():
             "Count Sort",
             "Bucket Sort"]
 
-    master = tk.Tk()
-    variable = tk.StringVar(master)
-    w = tk.OptionMenu(master, variable, *ALGOS)
+    master = tk.Tk(className=' Sorting Algos')      # setting up root and a window name
+    master.geometry("350x100")                      # window size
+    master.configure(background='white')
+
+    BASE_PATH = os.path.dirname(__file__)           # setting up a relative path to the icon
+    ICON_PATH = os.path.join(BASE_PATH, "icon.ico")
     master.iconbitmap(ICON_PATH)
-    w.pack()
+
+    text = tk.Text(master, height=1, width=50, padx=15, pady=10, font ='Calibri 14') # creating a text widget and configuring it
+    text.tag_configure('tag-center', justify='center')
+    text.insert('end', "Select your algorithm form the list below", 'tag-center')
+    text.pack()
+
+    variable = tk.StringVar(master)
+    variable.set("Click me!")
+
+    drop_down = tk.OptionMenu(master, variable, *algos)     # creating a drop down list
+    drop_down.config(font ='Calibri 14', bg='white')
+    drop_down.pack()
+
+    print(variable.get())
+
     tk.mainloop()
 
-choose_algo()
+
+
+choose()
