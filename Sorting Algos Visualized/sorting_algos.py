@@ -21,6 +21,7 @@ from abc import ABCMeta, abstractmethod
 import random
 import pygame
 
+import choose_algo
 import comparison_based_algos
 import non_comparison_based_algos
 
@@ -203,7 +204,7 @@ while RUNNING:
             if event.key == pygame.K_w:
                 generate_arr()
             # if event.key == pygame.K_a:
-            #     ponowny wybór algo
+            #       choose_algo.choose()
             if event.key == pygame.K_RETURN:
                 mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
         draw()
