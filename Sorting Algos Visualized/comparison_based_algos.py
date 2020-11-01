@@ -1,4 +1,3 @@
-
 """
 
 https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/
@@ -47,8 +46,6 @@ class Algorithm(metaclass=ABCMeta):
     @abstractmethod
     def algorithm(self):
         raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
-
-
 
 class BubbleSort(Algorithm):
     '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
