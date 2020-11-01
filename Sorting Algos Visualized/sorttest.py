@@ -140,7 +140,7 @@ def draw():
       # pygame.draw.line syntax: line(surface, color, start_pos, end_pos, width)
 
 # boolean variable to run the program in while loop
-RUNNING  = True
+RUNNING = True
 
 # main loop
 while RUNNING:
