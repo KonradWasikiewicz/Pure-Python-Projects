@@ -7,6 +7,9 @@ ze 'sorting' i ze done! jak skonczy
 list selection - do wyboru algorytmu
 dodać czas i napis "done!"
 algos do osobnych plikow i pol dnia z dostosowywwaniem ich
+
+jak jest posortowane to nie powinno byc mozna jeszcze raz sortowac posortowanej tabeli
+jak po posortowaniu naciskasz W (zeby wygenerowac nowa tebale, to widac stare sortowanie_)
 """
 
 
