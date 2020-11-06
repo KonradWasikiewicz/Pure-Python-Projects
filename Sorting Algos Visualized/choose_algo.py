@@ -12,14 +12,8 @@ chyba trzeba to w while loop, zeby click me nie zaciagalo jako odpowidz
 import os
 import tkinter as tk
 
-# def check():
-#     run = True
-#     while run:
-#         if variable.get() != "Click me!":
-#             print(variable.get())
-#             run = False
-#         else:
-#             continue
+
+
 
 
 def choose():
@@ -54,7 +48,12 @@ def choose():
     drop_down.config(font ='Calibri 14', bg='white')
     drop_down.pack()
 
-    # check()
+
+    run = True
+    while run:
+        if variable.get() != "Click me!":
+            print(variable.get())
+            run = False
 
     tk.mainloop()
 
