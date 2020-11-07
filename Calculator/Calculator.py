@@ -5,8 +5,8 @@ root = Tk()
 root.title('Calculator')
 root.resizable(width=False, height=False)
 
-#Creating main box 
-e = Entry(root, width = 40, font = 'Calibri 12', justify = 'right')    
+#Creating main box
+e = Entry(root, width = 40, font = 'Calibri 12', justify = 'right')
 e.grid(row = 1, column = 0, columnspan = 4, pady = 10, padx = 10)
 
 #Defining functions
@@ -90,7 +90,7 @@ def button_add():
     f_num = float(first_number)
     e.delete(0,END)
 
-def button_equal():  
+def button_equal():
     second_number = e.get()
     e.delete(0,END)
     if math == 'log':
@@ -116,7 +116,7 @@ def button_point():
     else:
         pass
 
-#Defining buttons 
+#Defining buttons
 
 button_0 = Button(root, text = '0', padx = 15, pady = 10, command = lambda: button_click(0))
 button_1 = Button(root, text = '1', padx = 15, pady = 10, command = lambda: button_click(1))
@@ -132,18 +132,18 @@ button_9 = Button(root, text = '9', padx = 15, pady = 10, command = lambda: butt
 button_point = Button(root, text = '.', padx = 15, pady = 10, command = button_point)
 button_equal = Button(root, text = '=', padx = 30, pady = 10, command = button_equal)
 button_add = Button(root, text = '+', padx = 15, pady = 10, command = button_add)
-button_substract = Button(root, text = '-', padx = 15, pady = 10, command = button_substract) 
-button_multiply = Button(root, text = '*', padx = 15, pady = 10, command = button_multiply) 
-button_divide = Button(root, text = '/', padx = 15, pady = 10, command = button_divide) 
-button_sqrt = Button(root, text = '√', padx = 15, pady = 10, command = button_sqrt) 
-button_exponentiation = Button(root, text = 'y^x', padx = 15, pady = 10, command = button_exponentiation) 
-button_percentage = Button(root, text = '%', padx = 15, pady = 10, command = button_percentage) 
+button_substract = Button(root, text = '-', padx = 15, pady = 10, command = button_substract)
+button_multiply = Button(root, text = '*', padx = 15, pady = 10, command = button_multiply)
+button_divide = Button(root, text = '/', padx = 15, pady = 10, command = button_divide)
+button_sqrt = Button(root, text = '√', padx = 15, pady = 10, command = button_sqrt)
+button_exponentiation = Button(root, text = 'y^x', padx = 15, pady = 10, command = button_exponentiation)
+button_percentage = Button(root, text = '%', padx = 15, pady = 10, command = button_percentage)
 button_log = Button(root, text = 'log', padx = 15, pady = 10, command = button_log)
-button_reciprocal = Button(root, text = '1/x', padx = 15, pady = 10, command = button_reciprocal) 
-button_sign_change = Button(root, text = '\u00B1', padx = 15, pady = 10, command = button_sign_change) 
+button_reciprocal = Button(root, text = '1/x', padx = 15, pady = 10, command = button_reciprocal)
+button_sign_change = Button(root, text = '\u00B1', padx = 15, pady = 10, command = button_sign_change)
 button_clear = Button(root, text = '\u232B', padx = 15, pady = 10, command = button_clear)
 
-#Putting buttons on the screen 
+#Putting buttons on the screen
 
 button_0.grid(row = 8, column = 0, sticky = 'nsew')
 button_point.grid(row = 8, column = 1, sticky = 'nsew')
@@ -169,9 +169,9 @@ button_exponentiation.grid(row = 4, column = 1, sticky = 'nsew')
 button_percentage.grid(row = 4, column = 2, sticky = 'nsew')
 button_divide.grid(row = 4, column = 3, sticky = 'nsew')
 
-button_reciprocal.grid(row = 3, column = 0, sticky = 'nsew')   
-button_log.grid(row = 3, column = 1, sticky = 'nsew')   
-button_sign_change.grid(row = 3, column = 2, sticky = 'nsew') 
+button_reciprocal.grid(row = 3, column = 0, sticky = 'nsew')
+button_log.grid(row = 3, column = 1, sticky = 'nsew')
+button_sign_change.grid(row = 3, column = 2, sticky = 'nsew')
 button_clear.grid(row = 3, column = 3, sticky = 'nsew')
 
 root.mainloop()
