@@ -1,10 +1,9 @@
-"""problemy:
-
+"""
 ogarnij dodaj timer
 ze 'sorting' i ze done! jak skonczy
 * załadowac inne algorytmy
 
-list selection - do wyboru algorytmu
+
 dodać czas i napis "done!"
 algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 
@@ -18,6 +17,7 @@ jak po posortowaniu naciskasz W (zeby wygenerowac nowa tebale, to widac stare so
 import os
 import sys
 import time
+import subprocess
 
 from abc import ABCMeta, abstractmethod
 
@@ -65,14 +65,6 @@ class Algorithm(metaclass=ABCMeta):
     @abstractmethod
     def algorithm(self):
         raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
-
-
-
-
-
-
-
-
 
 
 
@@ -206,8 +198,10 @@ while RUNNING:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 generate_arr()
-            # if event.key == pygame.K_a:
-            #       choose_algo.choose()
+            if event.key == pygame.K_a:
+                pygame.quit()
+                subprocess.call(["python", os.path.join(sys.path[0], __file__)] + sys.argv[1:])
+
             if event.key == pygame.K_RETURN:
                 mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
         draw()
