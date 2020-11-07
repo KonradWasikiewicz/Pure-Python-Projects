@@ -1,8 +1,3 @@
-''' button ok, umiejscowienie return, tak zeby sie komunikowaly
-
-https://stackoverflow.com/questions/45441885/how-can-i-create-a-dropdown-menu-from-a-list-in-tkinter
-
-'''
 import os
 import tkinter as tk
 
@@ -41,8 +36,9 @@ drop_down.pack()
 def change_dropdown(*args):
     global dropdown
     dropdown = variable.get()
-    if variable.get() != "Click me!":
-        print(dropdown)
+    master.destroy()                # closing the window after choosing the algo
+    # if variable.get() != "Click me!":
+    # print(dropdown)
 
 # link function to change dropdown
 variable.trace('w', change_dropdown)
