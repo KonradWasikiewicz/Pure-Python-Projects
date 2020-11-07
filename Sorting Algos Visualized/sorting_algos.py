@@ -179,7 +179,7 @@ def draw():
     SCREEN.blit(txt2, (680, 80))
     txt3 = FNT1.render("Press 'A' to choose a different algorithm.", 1, (0, 0, 0))
     SCREEN.blit(txt3, (680, 110))
-    txt4 = FNT2.render("Algorithm used: Merge Sort", 1, (0, 0, 0))                                                      #zmienic wyswietlanie, w zalenzosci od algo
+    txt4 = FNT2.render("Algorithm used: {}".format(choose_algo.dropdown), 1, (0, 0, 0))
     SCREEN.blit(txt4, (680, 250))
     # txt5 = FNT2.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
     # SCREEN.blit(txt5, (680, 300))
