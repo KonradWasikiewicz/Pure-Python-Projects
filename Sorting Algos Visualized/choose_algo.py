@@ -49,11 +49,6 @@ def choose():
     drop_down.pack()
 
 
-    run = True
-    while run:
-        if variable.get() != "Click me!":
-            print(variable.get())
-            run = False
 
     tk.mainloop()
 
