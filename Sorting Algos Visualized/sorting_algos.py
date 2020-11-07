@@ -3,6 +3,10 @@ ogarnij dodaj timer
 ze 'sorting' i ze done! jak skonczy
 * załadowac inne algorytmy
 
+ROZWALA SIE JAK SIE GENERUJE NOWA array!!!
+
+
+antialiasing na tych napisach przed uruchomieniem ogarnac bo to zle wyglada
 
 dodać czas i napis "done!"
 algos do osobnych plikow i pol dnia z dostosowywwaniem ich
@@ -193,15 +197,14 @@ RUNNING = True
 # main loop
 while RUNNING:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:   # setting up a possibility to quit while not running
+        if event.type == pygame.QUIT:   # possibility to quit while not running
             RUNNING = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 generate_arr()
-            if event.key == pygame.K_a:
+            if event.key == pygame.K_a: # possibility to re-run the program with a different algo
                 pygame.quit()
                 subprocess.call(["python", os.path.join(sys.path[0], __file__)] + sys.argv[1:])
-
             if event.key == pygame.K_RETURN:
                 mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
         draw()
