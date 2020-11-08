@@ -30,20 +30,18 @@ import comparison_based_algos
 import non_comparison_based_algos
 
 
-
-
 # List all the algorithms available in the project in dictionary and call the necessary functions
 # ALGOS = {
-#         "BubbleSort": comparison_based_algos.BubbleSort(),
-#         "MergeSort": comparison_based_algos.MergeSort(),    #działa ale cos nie wyswietla
-#         "QuickSort": comparison_based_algos.QuickSort(),
-#         "SelectionSort": comparison_based_algos.SelectionSort(),
-#         "InsertionSort": comparison_based_algos.InsertionSort(),
-#         "ShellSort": comparison_based_algos.ShellSort(),
-#         #"HeapSort": comparison_based_algos.HeapSort()
-#         #"RadixSort": non_comparison_based_algos.RadixSort(),
-#         #"CountSort": non_comparison_based_algos.CountSort(),
-#         #"BucketSort": non_comparison_based_algos.BucketSort()
+#         "Bubble Sort": comparison_based_algos.BubbleSort(),
+#         "Merge Sort": comparison_based_algos.MergeSort(),    #działa ale cos nie wyswietla
+#         "Quick Sort": comparison_based_algos.QuickSort(),
+#         "Selection Sort": comparison_based_algos.SelectionSort(),
+#         "Insertion Sort": comparison_based_algos.InsertionSort(),
+#         "Shell Sort": comparison_based_algos.ShellSort(),
+#         #"Heap Sort": comparison_based_algos.HeapSort()
+#         #"Radix Sort": non_comparison_based_algos.RadixSort(),
+#         #"Count Sort": non_comparison_based_algos.CountSort(),
+#         #"Bucket Sort": non_comparison_based_algos.BucketSort()
 #         }
 
 class Algorithm(metaclass=ABCMeta):
@@ -52,9 +50,9 @@ class Algorithm(metaclass=ABCMeta):
         self.array = random.sample(range(512), 512) # Random array of size 512
         self.name = name # Get name of the variable
 
-    def update_display(self, swap1=None, swap2=None):
-        import visualizer
-        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
+    # def update_display(self, swap1=None, swap2=None):
+    #     import visualizer
+    #     visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
     def run(self):
         '''start the timer and run the algorithm'''
@@ -87,11 +85,11 @@ pygame.display.set_icon(IMG)
 RECORDS = 89                                # defining number of RECORDS to be sorted
 DEFAULT_REC = [(0, 0, 0)]*RECORDS           # default record, to be modified/colored as the algo is running
 ARRAY = [0]*RECORDS                         # pre-defining the array as a list of x RECORDS with height of 0
-COLOR = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palette [blue, yellow, red, green]
+COLOR = [(0, 0, 255), (255, 255, 0), (255, 0, 0), (5, 124, 0)] # color palette [blue, yello, red, dark green]
 
 pygame.font.init()                          # initializing text, so that it can be shown within the app
-FNT1 = pygame.font.SysFont("calibri", 18)   # text for the instructions
-FNT2 = pygame.font.SysFont("calirbi", 25)   # text for displaying sorting properties
+FNT1 = pygame.font.SysFont("arial", 18)   # text for the instructions
+FNT2 = pygame.font.SysFont("arial", 25)   # text for displaying sorting properties
 
 
 # generating array
@@ -164,16 +162,17 @@ def algorithm(ARRAY, x1, y1, x2, y2):
 
 
 def draw():
+    #tu jakis warunek, tak zeby enter zmienial sie na sorting.. i na done...
     txt1 = FNT1.render("Press 'Enter' to start sorting.", 1, (0, 0, 0))    # rendering the text
     SCREEN.blit(txt1, (680, 450))                                        # setting its position
     txt2 = FNT1.render("Press 'S' for a new array.", 1, (0, 0, 0))
     SCREEN.blit(txt2, (680, 480))
     txt3 = FNT1.render("Press 'A' to choose a different algorithm.", 1, (0, 0, 0))
     SCREEN.blit(txt3, (680, 510))
-    txt4 = FNT2.render("Algorithm used: {}".format(choose_algo.dropdown), 1, (0, 0, 0))
+    txt4 = FNT2.render("Algorithm: {}".format(choose_algo.dropdown), 1, (0, 0, 0))
     SCREEN.blit(txt4, (680, 50))
-    # txt5 = FNT2.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
-    # SCREEN.blit(txt5, (680, 300))
+    txt5 = FNT2.render("Time passed: {:.2f} seconds".format(time.time()), 1, (0, 0, 0))            # time.time() - algorithm.start_time
+    SCREEN.blit(txt5, (680, 100))
 
     record_width = 6                                                   # width of a single record
     space_btwn_rec = 7                                                 # space between records
@@ -203,6 +202,8 @@ while RUNNING:
                 subprocess.call(["python", os.path.join(sys.path[0], __file__)] + sys.argv[1:])
             if event.key == pygame.K_RETURN:
                 mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
+                # algorithm = choose_algo.dropdown
+                # tu tez poczatek liczenia definiujesz
         draw()
         pygame.display.update()
 
