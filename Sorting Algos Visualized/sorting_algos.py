@@ -3,16 +3,13 @@ ogarnij dodaj timer
 ze 'sorting' i ze done! jak skonczy
 * załadowac inne algorytmy
 
-ROZWALA SIE JAK SIE GENERUJE NOWA array!!!
+przy wybieraniu powinno sie wyswietlac tak jak w excelu komentarze, ze ten najszybszy ten taki
 
-
-antialiasing na tych napisach przed uruchomieniem ogarnac bo to zle wyglada
 
 dodać czas i napis "done!"
 algos do osobnych plikow i pol dnia z dostosowywwaniem ich
 
 jak jest posortowane to nie powinno byc mozna jeszcze raz sortowac posortowanej tabeli
-jak po posortowaniu naciskasz W (zeby wygenerowac nowa tebale, to widac stare sortowanie_)
 """
 
 
@@ -70,8 +67,6 @@ class Algorithm(metaclass=ABCMeta):
     def algorithm(self):
         raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
 
-
-
 # main window size and fill
 WIDTH = 1000
 HEIGHT = 620
@@ -96,7 +91,7 @@ COLOR = [(46, 63, 222), (255, 255, 8), (255, 0, 0), (97, 223, 0)] # color palett
 
 pygame.font.init()                          # initializing text, so that it can be shown within the app
 FNT1 = pygame.font.SysFont("calibri", 18)   # text for the instructions
-FNT2 = pygame.font.SysFont("calibri", 25)   # text for displaying sorting properties
+FNT2 = pygame.font.SysFont("calirbi", 25)   # text for displaying sorting properties
 
 
 # generating array
@@ -170,13 +165,13 @@ def algorithm(ARRAY, x1, y1, x2, y2):
 
 def draw():
     txt1 = FNT1.render("Press 'Enter' to start sorting.", 1, (0, 0, 0))    # rendering the text
-    SCREEN.blit(txt1, (680, 50))                                        # setting its position
-    txt2 = FNT1.render("Press 'W' for a new array.", 1, (0, 0, 0))
-    SCREEN.blit(txt2, (680, 80))
+    SCREEN.blit(txt1, (680, 450))                                        # setting its position
+    txt2 = FNT1.render("Press 'S' for a new array.", 1, (0, 0, 0))
+    SCREEN.blit(txt2, (680, 480))
     txt3 = FNT1.render("Press 'A' to choose a different algorithm.", 1, (0, 0, 0))
-    SCREEN.blit(txt3, (680, 110))
+    SCREEN.blit(txt3, (680, 510))
     txt4 = FNT2.render("Algorithm used: {}".format(choose_algo.dropdown), 1, (0, 0, 0))
-    SCREEN.blit(txt4, (680, 250))
+    SCREEN.blit(txt4, (680, 50))
     # txt5 = FNT2.render("Time passed: {:.2f}".format(time.time() - algorithm.start_time), 1, (0, 0, 0))                #OPISZ CZAS !!!!!!!!!!!!!!!!!!
     # SCREEN.blit(txt5, (680, 300))
 
@@ -196,11 +191,12 @@ RUNNING = True
 
 # main loop
 while RUNNING:
+    SCREEN.fill((255, 255, 255))        # refreshing the background; solves the problem of the old array not being completely removed and antialiasing of the font
     for event in pygame.event.get():
         if event.type == pygame.QUIT:   # possibility to quit while not running
             RUNNING = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
+            if event.key == pygame.K_s:
                 generate_arr()
             if event.key == pygame.K_a: # possibility to re-run the program with a different algo
                 pygame.quit()
