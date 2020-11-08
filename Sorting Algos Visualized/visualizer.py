@@ -74,7 +74,7 @@ def main(args):
     else:
         try:
             algorithm = ALGOS[args[1]] # Collect algorithm
-            _, time_elapsed = algorithm.run() # Run algorithm and time it
+            _,time_elapsed = algorithm.run() # Run algorithm and time it
             keep_open(algorithm, time_elapsed) # Display results
         except:
             print("Error")
