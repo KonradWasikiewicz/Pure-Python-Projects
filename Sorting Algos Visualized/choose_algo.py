@@ -9,9 +9,9 @@ def choose():
     master.configure(background='white')
     variable = tk.StringVar(master)                 # create a tkinter variable
 
-    BASE_PATH = os.path.dirname(__file__)           # setting up a relative path to the icon
-    ICON_PATH = os.path.join(BASE_PATH, "icon.ico")
-    master.iconbitmap(ICON_PATH)
+    base_path = os.path.dirname(__file__)           # setting up a relative path to the icon
+    icon_path = os.path.join(base_path, "icon.ico")
+    master.iconbitmap(icon_path)
 
     algos = ["Bubble Sort",
             "Merge Sort",
