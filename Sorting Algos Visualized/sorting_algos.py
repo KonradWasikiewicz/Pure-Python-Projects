@@ -202,7 +202,9 @@ while RUNNING:
                 subprocess.call(["python", os.path.join(sys.path[0], __file__)] + sys.argv[1:])
             if event.key == pygame.K_RETURN:
                 mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
-                # algorithm = choose_algo.dropdown
+                # algorithm = ALGOS.get(choose_algo.dropdown)
+                # _, time_elapsed = algorithm.run()
+
                 # tu tez poczatek liczenia definiujesz
         draw()
         pygame.display.update()
