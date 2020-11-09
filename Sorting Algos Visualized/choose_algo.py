@@ -41,8 +41,6 @@ def choose():
         global dropdown
         dropdown = variable.get()
         master.destroy()                # closing the window after choosing the algo
-        # if variable.get() != "Click me!":
-        # print(dropdown)
 
     # link function to change dropdown
     variable.trace('w', change_dropdown)
