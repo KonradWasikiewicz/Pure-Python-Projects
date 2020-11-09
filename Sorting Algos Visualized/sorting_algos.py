@@ -1,15 +1,10 @@
 """
-ogarnij dodaj timer
-ze 'sorting' i ze done! jak skonczy
-* załadowac inne algorytmy
-
+ZROZUMIEC MECHANIZM KOLOROWANIA NA WOLNIEJSZYM TEMPIE
+POTEM PRZEMODELOWAC TYLKO MERGE SORT
+potem timer
+potem 'sorting...' i ze done! jak skonczy
+potem załadowac inne algorytmy
 przy wybieraniu powinno sie wyswietlac tak jak w excelu komentarze, ze ten najszybszy ten taki
-
-
-dodać czas i napis "done!"
-algos do osobnych plikow i pol dnia z dostosowywwaniem ich
-
-jak jest posortowane to nie powinno byc mozna jeszcze raz sortowac posortowanej tabeli
 """
 
 
@@ -50,7 +45,7 @@ class Algorithm(metaclass=ABCMeta):
         self.array = random.sample(range(512), 512) # Random array of size 512
         self.name = name # Get name of the variable
 
-    # def update_display(self, swap1=None, swap2=None):
+    # def update_display(self, swap1=None, swap2=None):    czy tu def draw
     #     import visualizer
     #     visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
 
@@ -104,7 +99,7 @@ def refill():
     SCREEN.fill((255, 255, 255))
     draw()
     pygame.display.update()
-    pygame.time.delay(8)                    # setting number of milliseconds in which each operation is being done
+    pygame.time.delay(700)                    #7  setting number of milliseconds in which each operation is being done
 
 def check_events():                         # checking if window closing request was made
     for event in pygame.event.get():
