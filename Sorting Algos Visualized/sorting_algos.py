@@ -5,6 +5,9 @@ potem timer
 potem 'sorting...' i ze done! jak skonczy
 potem załadowac inne algorytmy
 przy wybieraniu powinno sie wyswietlac tak jak w excelu komentarze, ze ten najszybszy ten taki
+
+https://www.youtube.com/watch?v=r7Dtus7N4pI
+zrozumiec dekoratory (naprawde), bo ta metaclasa jest do ogarniecia
 """
 
 
