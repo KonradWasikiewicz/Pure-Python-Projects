@@ -9,8 +9,6 @@ przy wybieraniu powinno sie wyswietlac tak jak w excelu komentarze, ze ten najsz
 https://www.youtube.com/watch?v=r7Dtus7N4pI
 zrozumiec dekoratory (naprawde), bo ta metaclasa jest do ogarniecia
 """
-
-
 # main file, responsible for visualizing algos defined in other files
 
 import os
@@ -28,19 +26,19 @@ import comparison_based_algos
 import non_comparison_based_algos
 
 
-# List all the algorithms available in the project in dictionary and call the necessary functions
-# ALGOS = {
-#         "Bubble Sort": comparison_based_algos.BubbleSort(),
-#         "Merge Sort": comparison_based_algos.MergeSort(),    #działa ale cos nie wyswietla
-#         "Quick Sort": comparison_based_algos.QuickSort(),
-#         "Selection Sort": comparison_based_algos.SelectionSort(),
-#         "Insertion Sort": comparison_based_algos.InsertionSort(),
-#         "Shell Sort": comparison_based_algos.ShellSort(),
-#         #"Heap Sort": comparison_based_algos.HeapSort()
-#         #"Radix Sort": non_comparison_based_algos.RadixSort(),
-#         #"Count Sort": non_comparison_based_algos.CountSort(),
-#         #"Bucket Sort": non_comparison_based_algos.BucketSort()
-#         }
+# dict containing all the algorithms available in the project with the necessary functions
+ALGOS = {
+        "Bubble Sort": comparison_based_algos.BubbleSort(),
+        "Merge Sort": comparison_based_algos.MergeSort(),
+        "Quick Sort": comparison_based_algos.QuickSort(),
+        "Selection Sort": comparison_based_algos.SelectionSort(),
+        "Insertion Sort": comparison_based_algos.InsertionSort(),
+        "Shell Sort": comparison_based_algos.ShellSort(),
+        #"Heap Sort": comparison_based_algos.HeapSort()
+        #"Radix Sort": non_comparison_based_algos.RadixSort(),
+        #"Count Sort": non_comparison_based_algos.CountSort(),
+        #"Bucket Sort": non_comparison_based_algos.BucketSort()
+        }
 
 class Algorithm(metaclass=ABCMeta):
     '''universal algorithm class'''
@@ -169,7 +167,7 @@ def draw():
     SCREEN.blit(txt3, (680, 510))
     txt4 = FNT2.render("Algorithm: {}".format(choose_algo.dropdown), 1, (0, 0, 0))
     SCREEN.blit(txt4, (680, 50))
-    txt5 = FNT2.render("Time passed: {:.2f} seconds".format(time.time()), 1, (0, 0, 0))            # time.time() - algorithm.start_time
+    txt5 = FNT2.render("Time passed: {:.2f} seconds".format(time.time()), 1, (0, 0, 0))    # time.time() - algorithm.start_time
     SCREEN.blit(txt5, (680, 100))
 
     record_width = 6                                                   # width of a single record
@@ -199,11 +197,9 @@ while RUNNING:
                 pygame.quit()
                 subprocess.call(["python", os.path.join(sys.path[0], __file__)] + sys.argv[1:])
             if event.key == pygame.K_RETURN:
-                mergesort(ARRAY, 1, len(ARRAY)-1)            #KLUCZOWE DLA DEFINICJI ALGOS
-                # algorithm = ALGOS.get(choose_algo.dropdown)
-                # _, time_elapsed = algorithm.run()
+                algorithm = ALGOS.get(choose_algo.dropdown)
+                _, time_elapsed = algorithm.run()
 
-                # tu tez poczatek liczenia definiujesz
         draw()
         pygame.display.update()
 
