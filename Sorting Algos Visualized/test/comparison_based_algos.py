@@ -23,31 +23,9 @@ heap sort ma sie updateowac
 import time
 import random
 
-from abc import ABCMeta, abstractmethod
+import sorting_algos
 
-
-class Algorithm(metaclass=ABCMeta):
-    '''universal algorithm class'''
-    def __init__(self, name):
-        self.array = random.sample(range(512), 512) # Random array of size 512
-        self.name = name # Get name of the variable
-
-    def update_display(self, swap1=None, swap2=None):
-        import visualizer
-        visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
-
-    def run(self):
-        '''start the timer and run the algorithm'''
-        self.start_time = time.time()
-        self.algorithm()
-        time_elapsed = time.time() - self.start_time
-        return self.array, time_elapsed
-
-    @abstractmethod
-    def algorithm(self):
-        raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
-
-class BubbleSort(Algorithm):
+class BubbleSort(sorting_algos.Algorithm):
     '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
     def __init__(self):
         super().__init__("Bubble Sort")
@@ -59,7 +37,7 @@ class BubbleSort(Algorithm):
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
             self.update_display(self.array[i], self.array[i+1])
 
-class MergeSort(Algorithm):
+class MergeSort(sorting_algos.Algorithm):
     ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
     def __init__(self):
         super().__init__("Merge Sort")
@@ -89,7 +67,7 @@ class MergeSort(Algorithm):
         self.update_display(self.array[i], self.array[i+1])
         return result
 
-class QuickSort(Algorithm):
+class QuickSort(sorting_algos.Algorithm):
     ''' Quick sort - picks an elements as a pivot and sorts the given array around the pivot'''
     def __init__(self):
         super().__init__("Quick Sort")
@@ -135,7 +113,7 @@ class QuickSort(Algorithm):
         return high #moze niepotrzebne?
 
 
-class SelectionSort(Algorithm):
+class SelectionSort(sorting_algos.Algorithm):
     '''Selection sort - finding minimum value in an array and swapping it with nth element
     (beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
     def __init__(self):
@@ -169,7 +147,7 @@ class InsertionSort(Algorithm):
             self.update_display(self.array[val], self.array[i])
 
 
-class ShellSort(Algorithm):
+class ShellSort(sorting_algos.Algorithm):
     '''Shell sort - take a second half of the array and compare every element with an element from the first half'''
     def __init__(self):
         super().__init__("Shell Sort")
@@ -199,7 +177,7 @@ class ShellSort(Algorithm):
 root and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
 
 '''
-class HeapSort(Algorithm):
+class HeapSort(sorting_algos.Algorithm):
     def __init__(self):
         super().__init__("Heap Sort")
 
