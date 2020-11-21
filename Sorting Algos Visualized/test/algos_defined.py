@@ -1,14 +1,7 @@
 """
-
 https://www.geeksforgeeks.org/analysis-of-different-sorting-techniques/
 https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.htm
 https://dev.to/kgprajwal/build-a-sorting-visualizer-in-python-2oej
-Comparison based sorts:
-bubble, insertion, quick, selection, merge, heap, shell
-
-Non-comparison based sorts:
-radix, count, bucket
-
 
 https://github.com/K-G-PRAJWAL/Python-Projects/blob/master/Sorting%20Visualizer/visualizer.py
 https://www.michaelfxu.com/algorithm%20series/algorithms-with-python-pt3/
@@ -18,14 +11,38 @@ opisac insertion, seleection
 dopisac cos do quick sort
 
 heap sort ma sie updateowac
-
 """
 import time
 import random
 
-import sorting_algos
+import visualizer
 
-class BubbleSort(sorting_algos.Algorithm):
+from abc import ABCMeta, abstractmethod
+
+class Algorithm(metaclass=ABCMeta):
+    '''universal algorithm class'''
+    def __init__(self, name):
+        self.array = random.sample(range(512), 512) # Random array of size 512
+        self.name = name # Get name of the variable
+
+    # def update_display(self, swap1=None, swap2=None):    czy tu def draw
+    #     import visualizer
+    #     visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
+
+    def run(self):
+        '''start the timer and run the algorithm'''
+        self.start_time = time.time()
+        self.algorithm()
+        time_elapsed = time.time() - self.start_time
+        return self.array, time_elapsed
+
+    @abstractmethod
+    def algorithm(self):
+        raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
+
+'''COMPARIN BASED ALGOS'''
+
+class BubbleSort(Algorithm):
     '''Bubble sort - each pair of adjecent elements in a list is compared and elements are swapped if not in order'''
     def __init__(self):
         super().__init__("Bubble Sort")
@@ -35,9 +52,9 @@ class BubbleSort(sorting_algos.Algorithm):
             for i in range(len(self.array) -1 -iteration):
                 if self.array[i] > self.array[i+1]:
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
-            self.sorting_algos.update_display(self.array[i], self.array[i+1])
+            self.update_display(self.array[i], self.array[i+1])
 
-class MergeSort(sorting_algos.Algorithm):
+class MergeSort(Algorithm):
     ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''
     def __init__(self):
         super().__init__("Merge Sort")
@@ -67,7 +84,7 @@ class MergeSort(sorting_algos.Algorithm):
         self.update_display(self.array[i], self.array[i+1])
         return result
 
-class QuickSort(sorting_algos.Algorithm):
+class QuickSort(Algorithm):
     ''' Quick sort - picks an elements as a pivot and sorts the given array around the pivot'''
     def __init__(self):
         super().__init__("Quick Sort")
@@ -113,7 +130,7 @@ class QuickSort(sorting_algos.Algorithm):
         return high #moze niepotrzebne?
 
 
-class SelectionSort(sorting_algos.Algorithm):
+class SelectionSort(Algorithm):
     '''Selection sort - finding minimum value in an array and swapping it with nth element
     (beginning at the first one), so that each time we iterate the analyzed array becomes shorter'''
     def __init__(self):
@@ -147,7 +164,7 @@ class InsertionSort(Algorithm):
             self.update_display(self.array[val], self.array[i])
 
 
-class ShellSort(sorting_algos.Algorithm):
+class ShellSort(Algorithm):
     '''Shell sort - take a second half of the array and compare every element with an element from the first half'''
     def __init__(self):
         super().__init__("Shell Sort")
@@ -177,7 +194,7 @@ class ShellSort(sorting_algos.Algorithm):
 root and goes down the tree to sort the elements. At the end root must be the biggest of all.'''
 
 '''
-class HeapSort(sorting_algos.Algorithm):
+class HeapSort(Algorithm):
     def __init__(self):
         super().__init__("Heap Sort")
 
@@ -214,3 +231,20 @@ class HeapSort(sorting_algos.Algorithm):
             self.array[i], self.array[parent] = self.array[parent], self.array[i]
             # recurisve function to move it further down the array
             self.heap_it(array, arr_len, parent)'''
+
+'''NON-COMPARISON BASED ALGOS'''
+
+class RadixSort(Algorithm):
+    ''' Radix Sort -  '''
+    def __init__(self):
+        super().__init__("Radix Sort")
+
+class CountSort(Algorithm):
+    ''' Count Sort -  '''
+    def __init__(self):
+        super().__init__("Count Sort")
+
+class BucketSort(Algorithm):
+    ''' Bucket Sort -  '''
+    def __init__(self):
+        super().__init__("Bucket Sort")

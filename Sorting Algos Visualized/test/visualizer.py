@@ -19,28 +19,25 @@ import sys
 import time
 import subprocess
 
-from abc import ABCMeta, abstractmethod
-
 import random
 import pygame
 
 import choose_algo
-import comparison_based_algos
-import non_comparison_based_algos
+import algos_defined
 
 
 # dict containing all the algorithms available in the project with the necessary functions
 ALGOS = {
-        "Bubble Sort": comparison_based_algos.BubbleSort(),
-        "Merge Sort": comparison_based_algos.MergeSort(),
-        "Quick Sort": comparison_based_algos.QuickSort(),
-        "Selection Sort": comparison_based_algos.SelectionSort(),
-        "Insertion Sort": comparison_based_algos.InsertionSort(),
-        "Shell Sort": comparison_based_algos.ShellSort(),
-        #"Heap Sort": comparison_based_algos.HeapSort()
-        #"Radix Sort": non_comparison_based_algos.RadixSort(),
-        #"Count Sort": non_comparison_based_algos.CountSort(),
-        #"Bucket Sort": non_comparison_based_algos.BucketSort()
+        "Bubble Sort": algos_defined.BubbleSort(),
+        "Merge Sort": algos_defined.MergeSort(),
+        "Quick Sort": algos_defined.QuickSort(),
+        "Selection Sort": algos_defined.SelectionSort(),
+        "Insertion Sort": algos_defined.InsertionSort(),
+        "Shell Sort": algos_defined.ShellSort(),
+        #"Heap Sort": algos_defined.HeapSort()
+        #"Radix Sort": algos_defined.RadixSort(),
+        #"Count Sort": algos_defined.CountSort(),
+        #"Bucket Sort": algos_defined.BucketSort()
         }
 
 # main window size and fill
