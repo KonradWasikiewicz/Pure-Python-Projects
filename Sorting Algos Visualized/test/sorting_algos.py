@@ -8,6 +8,9 @@ przy wybieraniu powinno sie wyswietlac tak jak w excelu komentarze, ze ten najsz
 
 https://www.youtube.com/watch?v=r7Dtus7N4pI
 zrozumiec dekoratory (naprawde), bo ta metaclasa jest do ogarniecia
+
+nie powinna moc sie sortowac juz raz posortowana zbiorowosc
+zmiana algorytmu nie powinna wywoływac zmiany tabeli do sortowania,  bo nie ma porownowalnosci
 """
 # main file, responsible for visualizing algos defined in other files
 
@@ -39,27 +42,6 @@ ALGOS = {
         #"Count Sort": non_comparison_based_algos.CountSort(),
         #"Bucket Sort": non_comparison_based_algos.BucketSort()
         }
-
-class Algorithm(metaclass=ABCMeta):
-    '''universal algorithm class'''
-    def __init__(self, name):
-        self.array = random.sample(range(512), 512) # Random array of size 512
-        self.name = name # Get name of the variable
-
-    # def update_display(self, swap1=None, swap2=None):    czy tu def draw
-    #     import visualizer
-    #     visualizer.update(self, swap1, swap2) #pass the indexes to be swapped into the visualizer
-
-    def run(self):
-        '''start the timer and run the algorithm'''
-        self.start_time = time.time()
-        self.algorithm()
-        time_elapsed = time.time() - self.start_time
-        return self.array, time_elapsed
-
-    @abstractmethod
-    def algorithm(self):
-        raise TypeError(f"Algorithm.algorithm() has not been overwritten.")
 
 # main window size and fill
 WIDTH = 1000
@@ -155,7 +137,6 @@ def algorithm(ARRAY, x1, y1, x2, y2):
             DEFAULT_REC[i] = COLOR[3]
         else:
             DEFAULT_REC[i] = COLOR[0]
-
 
 def draw():
     #tu jakis warunek, tak zeby enter zmienial sie na sorting.. i na done...
