@@ -35,7 +35,7 @@ class BubbleSort(sorting_algos.Algorithm):
             for i in range(len(self.array) -1 -iteration):
                 if self.array[i] > self.array[i+1]:
                     self.array[i], self.array[i+1] = self.array[i+1], self.array[i]  #elements swap takes place here
-            self.update_display(self.array[i], self.array[i+1])
+            self.sorting_algos.update_display(self.array[i], self.array[i+1])
 
 class MergeSort(sorting_algos.Algorithm):
     ''' Merge sort - divide the array in half, sorts them and merges two sub-sorted arrays into one'''

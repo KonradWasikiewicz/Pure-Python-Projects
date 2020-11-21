@@ -199,7 +199,6 @@ while RUNNING:
             if event.key == pygame.K_RETURN:
                 algorithm = ALGOS.get(choose_algo.dropdown)
                 _, time_elapsed = algorithm.run()
-
         draw()
         pygame.display.update()
 
